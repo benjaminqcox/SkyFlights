@@ -13,6 +13,13 @@ public class Booking {
 
     public String flightID;
 
+    public Booking() {
+    }
+
+    public Booking(String flightID) {
+        this.flightID = flightID;
+    }
+
     public String getUserID() {
         return userID;
     }

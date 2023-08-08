@@ -1,71 +1,53 @@
 package com.sky.SkyFlights.dtos;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Date;
 
 public class BookingDTO {
 
+    @Id
+    @GeneratedValue
+    private Integer id;
 
+    private Date dateOfBooking;
 
-    private String flightId;
+    private FlightDTO flightInfo;
 
-    private Date departureTime;
-
-    private Date arrivalTime;
-
-    private String departureAirport;
-
-    private String arrivalAirport;
-
-    private String weather;
+    private WeatherDTO weather;
 
     public BookingDTO() {
     }
 
-    public String getFlightId() {
-        return flightId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setFlightId(String flightId) {
-        this.flightId = flightId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Date getDepartureTime() {
-        return departureTime;
+    public Date getDateOfBooking() {
+        return dateOfBooking;
     }
 
-    public void setDepartureTime(Date departureTime) {
-        this.departureTime = departureTime;
+    public void setDateOfBooking(Date dateOfBooking) {
+        this.dateOfBooking = dateOfBooking;
     }
 
-    public Date getArrivalTime() {
-        return arrivalTime;
+    public FlightDTO getFlightInfo() {
+        return flightInfo;
     }
 
-    public void setArrivalTime(Date arrivalTime) {
-        this.arrivalTime = arrivalTime;
+    public void setFlightInfo(FlightDTO flightInfo) {
+        this.flightInfo = flightInfo;
     }
 
-    public String getDepartureAirport() {
-        return departureAirport;
-    }
-
-    public void setDepartureAirport(String departureAirport) {
-        this.departureAirport = departureAirport;
-    }
-
-    public String getArrivalAirport() {
-        return arrivalAirport;
-    }
-
-    public void setArrivalAirport(String arrivalAirport) {
-        this.arrivalAirport = arrivalAirport;
-    }
-
-    public String getWeather() {
+    public WeatherDTO getWeather() {
         return weather;
     }
 
-    public void setWeather(String weather) {
+    public void setWeather(WeatherDTO weather) {
         this.weather = weather;
     }
 }
