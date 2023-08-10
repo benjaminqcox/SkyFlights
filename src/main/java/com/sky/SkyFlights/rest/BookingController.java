@@ -29,13 +29,15 @@ public class BookingController {
 
     @GetMapping("/get/{term}")
     public LocationResponse getLocation(@PathVariable String term) {
-        return localApiClient
+        LocationResponse response = new LocationResponse();
+        response = localApiClient
                 .get()
-                .uri("/locations/query?term=" + term +"&locale=en-US&location_types=airport&limit=2&active_only=true")
+                .uri("/locations/query?term=" + term +"&locale=en-US&location_types=airport&limit=1&active_only=true")
                 .header("apikey", "9ptw_en0a60KfjnlnslcQcSRz6QjkbQ3")
                 .retrieve()
                 .bodyToMono(LocationResponse.class)
                 .block();
+    return response;
     }
 
     @GetMapping("/get/")
