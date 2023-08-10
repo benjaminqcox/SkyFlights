@@ -85,16 +85,16 @@ public class Location {
     private List<Special> special;
     @JsonProperty("tourist_region")
     private List<Object> touristRegion;
-    @JsonProperty("car_rentals")
-    private List<CarRental> carRentals;
+//    @JsonProperty("car_rentals")
+//    private List<CarRental> carRentals;
     @JsonProperty("new_ground")
     private Boolean newGround;
     @JsonProperty("routing_priority")
     private Integer routingPriority;
     @JsonProperty("type")
     private String type;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
+//    @JsonIgnore
+//    private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
     /**
      * No args constructor for use in serialization
@@ -131,7 +131,35 @@ public class Location {
      * @param location
      * @param providers
      */
-    public Location(String id, Integer intId, Integer airportIntId, Boolean active, String code, String icao, String name, String slug, String slugEn, List<String> alternativeNames, Integer rank, Integer globalRankDst, Integer dstPopularityScore, String timezone, City city, Location__1 location, List<AlternativeDeparturePoint> alternativeDeparturePoints, List<Tag> tags, List<Integer> providers, List<Special> special, List<Object> touristRegion, List<CarRental> carRentals, Boolean newGround, Integer routingPriority, String type) {
+//    public Location(String id, Integer intId, Integer airportIntId, Boolean active, String code, String icao, String name, String slug, String slugEn, List<String> alternativeNames, Integer rank, Integer globalRankDst, Integer dstPopularityScore, String timezone, City city, Location__1 location, List<AlternativeDeparturePoint> alternativeDeparturePoints, List<Tag> tags, List<Integer> providers, List<Special> special, List<Object> touristRegion, List<CarRental> carRentals, Boolean newGround, Integer routingPriority, String type) {
+//        super();
+//        this.id = id;
+//        this.intId = intId;
+//        this.airportIntId = airportIntId;
+//        this.active = active;
+//        this.code = code;
+//        this.icao = icao;
+//        this.name = name;
+//        this.slug = slug;
+//        this.slugEn = slugEn;
+//        this.alternativeNames = alternativeNames;
+//        this.rank = rank;
+//        this.globalRankDst = globalRankDst;
+//        this.dstPopularityScore = dstPopularityScore;
+//        this.timezone = timezone;
+//        this.city = city;
+//        this.location = location;
+//        this.alternativeDeparturePoints = alternativeDeparturePoints;
+//        this.tags = tags;
+//        this.providers = providers;
+//        this.special = special;
+//        this.touristRegion = touristRegion;
+//        this.carRentals = carRentals;
+//        this.newGround = newGround;
+//        this.routingPriority = routingPriority;
+//        this.type = type;
+//    }
+    public Location(String id, Integer intId, Integer airportIntId, Boolean active, String code, String icao, String name, String slug, String slugEn, List<String> alternativeNames, Integer rank, Integer globalRankDst, Integer dstPopularityScore, String timezone, City city, Location__1 location, List<AlternativeDeparturePoint> alternativeDeparturePoints, List<Tag> tags, List<Integer> providers, List<Special> special, List<Object> touristRegion, Boolean newGround, Integer routingPriority, String type) {
         super();
         this.id = id;
         this.intId = intId;
@@ -154,7 +182,6 @@ public class Location {
         this.providers = providers;
         this.special = special;
         this.touristRegion = touristRegion;
-        this.carRentals = carRentals;
         this.newGround = newGround;
         this.routingPriority = routingPriority;
         this.type = type;
@@ -370,15 +397,15 @@ public class Location {
         this.touristRegion = touristRegion;
     }
 
-    @JsonProperty("car_rentals")
-    public List<CarRental> getCarRentals() {
-        return carRentals;
-    }
-
-    @JsonProperty("car_rentals")
-    public void setCarRentals(List<CarRental> carRentals) {
-        this.carRentals = carRentals;
-    }
+//    @JsonProperty("car_rentals")
+//    public List<CarRental> getCarRentals() {
+//        return carRentals;
+//    }
+//
+//    @JsonProperty("car_rentals")
+//    public void setCarRentals(List<CarRental> carRentals) {
+//        this.carRentals = carRentals;
+//    }
 
     @JsonProperty("new_ground")
     public Boolean getNewGround() {
@@ -410,15 +437,15 @@ public class Location {
         this.type = type;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
+//    @JsonAnyGetter
+//    public Map<String, Object> getAdditionalProperties() {
+//        return this.additionalProperties;
+//    }
+//
+//    @JsonAnySetter
+//    public void setAdditionalProperty(String name, Object value) {
+//        this.additionalProperties.put(name, value);
+//    }
 
     @Override
     public String toString() {
@@ -508,10 +535,10 @@ public class Location {
         sb.append('=');
         sb.append(((this.touristRegion == null)?"<null>":this.touristRegion));
         sb.append(',');
-        sb.append("carRentals");
-        sb.append('=');
-        sb.append(((this.carRentals == null)?"<null>":this.carRentals));
-        sb.append(',');
+//        sb.append("carRentals");
+//        sb.append('=');
+//        sb.append(((this.carRentals == null)?"<null>":this.carRentals));
+//        sb.append(',');
         sb.append("newGround");
         sb.append('=');
         sb.append(((this.newGround == null)?"<null>":this.newGround));
@@ -524,10 +551,10 @@ public class Location {
         sb.append('=');
         sb.append(((this.type == null)?"<null>":this.type));
         sb.append(',');
-        sb.append("additionalProperties");
-        sb.append('=');
-        sb.append(((this.additionalProperties == null)?"<null>":this.additionalProperties));
-        sb.append(',');
+//        sb.append("additionalProperties");
+//        sb.append('=');
+//        sb.append(((this.additionalProperties == null)?"<null>":this.additionalProperties));
+//        sb.append(',');
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {
