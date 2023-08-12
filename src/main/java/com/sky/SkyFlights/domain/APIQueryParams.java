@@ -10,35 +10,39 @@ public class APIQueryParams {
 
     private static String activeOnly = "true";
 
-    private static String returnFromDifferentCity;
+    private static String searchLocale = "gb";
 
-    private static String returnToDifferentCity;
+    private static String maxFlyDuration = "24";
 
-    private static String oneForCity;
+    private static String returnFromDifferentCity = "false";
 
-    private static String onePerDate;
+    private static String returnToDifferentCity = "false";
 
-    private static String numberOfAdults;
+    private static String oneForCity = "0";
 
-    private static String selectedCabins;
+    private static String onePerDate = "0";
 
-    private static String adultHoldBag;
+    private static String numberOfAdults = "2";
 
-    private static String adultHandBag;
+    private static String selectedCabins = "M";
 
-    private static String onlyWeekDays;
+    private static String adultHoldBag = "1,0";
 
-    private static String onlyWeekends;
+    private static String adultHandBag = "1,1";
 
-    private static String partnerMarket;
+    private static String onlyWeekDays = "false";
 
-    private static String currency;
+    private static String onlyWeekends = "false";
 
-    private static String maxStopovers;
+    private static String partnerMarket = "us";
 
-    private static String maxSectorStopovers;
+    private static String currency = "GBP";
 
-    private static String vehicleType;
+    private static String maxStopovers = "1";
+
+    private static String maxSectorStopovers = "1";
+
+    private static String vehicleType = "aircraft";
 
 
     public APIQueryParams() {
@@ -51,11 +55,13 @@ public class APIQueryParams {
         this.activeOnly = activeOnly;
     }
 
-    public APIQueryParams(String locale, String locationTypes, String returnLimits, String activeOnly, String returnFromDifferentCity, String returnToDifferentCity, String oneForCity, String onePerDate, String numberOfAdults, String selectedCabins, String adultHoldBag, String adultHandBag, String onlyWeekDays, String onlyWeekends, String partnerMarket, String currency, String maxStopovers, String maxSectorStopovers, String vehicleType) {
+    public APIQueryParams(String locale, String maxFlyDuration, String locationTypes, String returnLimits, String activeOnly, String searchLocale, String returnFromDifferentCity, String returnToDifferentCity, String oneForCity, String onePerDate, String numberOfAdults, String selectedCabins, String adultHoldBag, String adultHandBag, String onlyWeekDays, String onlyWeekends, String partnerMarket, String currency, String maxStopovers, String maxSectorStopovers, String vehicleType) {
         this.locale = locale;
+        this.maxFlyDuration = maxFlyDuration;
         this.locationTypes = locationTypes;
         this.returnLimits = returnLimits;
         this.activeOnly = activeOnly;
+        this.searchLocale = searchLocale;
         this.returnFromDifferentCity = returnFromDifferentCity;
         this.returnToDifferentCity = returnToDifferentCity;
         this.oneForCity = oneForCity;
@@ -71,6 +77,14 @@ public class APIQueryParams {
         this.maxStopovers = maxStopovers;
         this.maxSectorStopovers = maxSectorStopovers;
         this.vehicleType = vehicleType;
+    }
+
+    public static String getMaxFlyDuration() {
+        return maxFlyDuration;
+    }
+
+    public static void setMaxFlyDuration(String maxFlyDuration) {
+        APIQueryParams.maxFlyDuration = maxFlyDuration;
     }
 
     public static String getLocale() {
@@ -223,5 +237,13 @@ public class APIQueryParams {
 
     public static void setVehicleType(String vehicleType) {
         APIQueryParams.vehicleType = vehicleType;
+    }
+
+    public static String getSearchLocale() {
+        return searchLocale;
+    }
+
+    public static void setSearchLocale(String searchLocale) {
+        APIQueryParams.searchLocale = searchLocale;
     }
 }
