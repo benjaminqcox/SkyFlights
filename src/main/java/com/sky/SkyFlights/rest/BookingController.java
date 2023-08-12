@@ -32,7 +32,7 @@ public class BookingController {
         LocationResponse response = new LocationResponse();
         response = localApiClient
                 .get()
-                .uri("/locations/query?term=" + term +"&locale=en-US&location_types=airport&limit=1&active_only=true")
+                .uri("/locations/query?term=" + term + locationSearchURIBuilder.uriBuilder())
                 .header("apikey", "9ptw_en0a60KfjnlnslcQcSRz6QjkbQ3")
                 .retrieve()
                 .bodyToMono(LocationResponse.class)
