@@ -79,10 +79,10 @@ public class BookingController {
         return flightDTOs;
     }
 
+    // filtered api will be used to
     @GetMapping("/getFiltered/")
-    public List<FlightDTO> getOneWayFlightsFiltered(@RequestParam("flyFrom") String flyFrom, @RequestParam("flyTo") String flyTo, @RequestParam("leaveDateFrom") String leaveDateFrom, @RequestParam("leaveDateTo") String leaveDateTo, @RequestParam(value = "numberOfAdults", defaultValue = "2") String numberOfAdults, @RequestParam(value = "numberOfChildren", defaultValue = "0") String numberOfChildren, @RequestParam(value = "stopovers", defaultValue = "0") String stopovers, @RequestParam(value = "currency", defaultValue = "gbp") String currency, @RequestParam(value = "priceFrom", defaultValue = "0") String priceFrom, @RequestParam(value = "priceTo", defaultValue = "20000") String priceTo, @RequestParam(value = "cabin", defaultValue = "M") String cabin, @RequestParam(value = "weekdaysOnly", defaultValue = "false") String weekdaysOnly, @RequestParam(value = "weekendsOnly", defaultValue = "false") String weekendsOnly) {
+    public List<FlightDTO> getOneWayFlightsFiltered(@RequestParam(value = "flyFrom", required = true) String flyFrom, @RequestParam(value = "flyTo", required = true) String flyTo, @RequestParam(value = "leaveDateFrom", required = true) String leaveDateFrom, @RequestParam(value = "leaveDateTo", required = true) String leaveDateTo, @RequestParam(value = "numberOfAdults", defaultValue = "2") String numberOfAdults, @RequestParam(value = "numberOfChildren", defaultValue = "0") String numberOfChildren, @RequestParam(value = "stopovers", defaultValue = "0") String stopovers, @RequestParam(value = "currency", defaultValue = "GBP") String currency, @RequestParam(value = "priceFrom", defaultValue = "0") String priceFrom, @RequestParam(value = "priceTo", defaultValue = "20000") String priceTo, @RequestParam(value = "cabin", defaultValue = "M") String cabin, @RequestParam(value = "weekdaysOnly", defaultValue = "false") String weekdaysOnly, @RequestParam(value = "weekendsOnly", defaultValue = "false") String weekendsOnly) {
 
-        // return a Mono of FlightSearchResponse, which will contain a huge amount of data
         FlightSearchResponse response = localApiClient
                 .get()
                 .uri("/v2/search?fly_from=" + flyFrom + "&fly_to=" + flyTo + "&date_from=" + leaveDateFrom + "&date_to=" + leaveDateTo + "&adults=" + numberOfAdults + "&children=" + numberOfChildren + "&max_stopovers=" + stopovers + "&curr=" + currency + "&price_from=" + priceFrom + "&price_to=" + priceTo + "&selected_cabins=" + cabin + "&only_working_days=" + weekdaysOnly + "&only_weekends=" + weekendsOnly + flightSearchURIBuilder.uriBuilderFiltered())
@@ -102,10 +102,13 @@ public class BookingController {
             flightDTO.setLocal_departure(response.getData().get(i).getLocalDeparture());
             flightDTO.setLocal_arrival(response.getData().get(i).getLocalArrival());
             flightDTO.setFlyFrom(response.getData().get(i).getFlyFrom());
+            flightDTO.setCityFrom(response.getData().get(i).getCityFrom());
             flightDTO.setFlyTo(response.getData().get(i).getFlyTo());
+            flightDTO.setCityTo(response.getData().get(i).getCityTo());
             flightDTO.setDuration(response.getData().get(i).getDuration());
             flightDTO.setFare(response.getData().get(i).getFare());
             flightDTO.setAirline(response.getData().get(i).getAirlines());
+
 
             flightDTOs.add(flightDTO);
         }
