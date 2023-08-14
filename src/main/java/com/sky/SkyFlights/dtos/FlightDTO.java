@@ -28,7 +28,7 @@ public class FlightDTO {
 
 
 
-    public FlightDTO(String localDeparture, String localArrival, String flyFrom, String flyTo, Duration duration, Fare fare, List<String> airlines) {
+    public FlightDTO() {
     }
 
 
