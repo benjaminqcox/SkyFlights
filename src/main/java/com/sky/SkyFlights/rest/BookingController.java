@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,7 +71,7 @@ public class BookingController {
             flightDTO.setLocal_arrival(response.getData().get(i).getLocalArrival());
             flightDTO.setFlyFrom(response.getData().get(i).getFlyFrom());
             flightDTO.setFlyTo(response.getData().get(i).getFlyTo());
-            flightDTO.setDuration(response.getData().get(i).getDuration());
+            flightDTO.setDuration(response.getData().get(i).getDuration().getTotal().longValue());
             flightDTO.setFare(response.getData().get(i).getFare());
             flightDTO.setAirline(response.getData().get(i).getAirlines());
 
@@ -95,6 +96,7 @@ public class BookingController {
 
         List<FlightDTO> flightDTOs = new ArrayList<>();
 
+
         for (int i = 0; i < response.getData().size(); i++) {
             FlightDTO flightDTO = new FlightDTO();
 
@@ -105,7 +107,7 @@ public class BookingController {
             flightDTO.setCityFrom(response.getData().get(i).getCityFrom());
             flightDTO.setFlyTo(response.getData().get(i).getFlyTo());
             flightDTO.setCityTo(response.getData().get(i).getCityTo());
-            flightDTO.setDuration(response.getData().get(i).getDuration());
+            flightDTO.setDuration(response.getData().get(i).getDuration().getTotal().longValue());
             flightDTO.setFare(response.getData().get(i).getFare());
             flightDTO.setAirline(response.getData().get(i).getAirlines());
 

@@ -21,7 +21,7 @@ public class FlightDTO {
 
      String flyTo;
 
-     Duration duration;
+     Long duration;
 
      Fare fare;
 
@@ -34,7 +34,7 @@ public class FlightDTO {
     public FlightDTO() {
     }
 
-    public FlightDTO(String local_departure, String local_arrival, String flyFrom, String flyTo, Duration duration, Fare fare, List<String> airlines, String cityFrom, String cityTo) {
+    public FlightDTO(String local_departure, String local_arrival, String flyFrom, String flyTo, Long duration, Fare fare, List<String> airlines, String cityFrom, String cityTo) {
         this.local_departure = local_departure;
         this.local_arrival = local_arrival;
         this.flyFrom = flyFrom;
@@ -78,11 +78,11 @@ public class FlightDTO {
         this.flyTo = flyTo;
     }
 
-    public Duration getDuration() {
+    public Long getDuration() {
         return duration;
     }
 
-    public void setDuration(Duration duration) {
+    public void setDuration(Long duration) {
         this.duration = duration;
     }
 
