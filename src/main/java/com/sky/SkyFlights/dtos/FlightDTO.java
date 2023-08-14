@@ -1,50 +1,113 @@
 package com.sky.SkyFlights.dtos;
 
-import java.util.Date;
+import com.sky.SkyFlights.domain.FlightSearchAPI.Duration;
+import com.sky.SkyFlights.domain.FlightSearchAPI.Fare;
+
+import java.util.List;
 
 public class FlightDTO {
 
 
-    private Date departureDate;
+     String local_departure;
 
-    private Date arrivalDate;
+     String local_arrival;
 
-    private String departureAirport;
+     String flyFrom;
 
-    private String arrivalAirport;
+     String flyTo;
+
+     Duration duration;
+
+     Fare fare;
+
+     List<String> airlines;
+
+
+
 
     public FlightDTO() {
     }
 
-    public Date getDepartureDate() {
-        return departureDate;
+
+    public FlightDTO(String local_departure, String local_arrival, String flyFrom, String flyTo, Duration duration, Fare fare, List<String> airlines, String departureTime, String arrivalTime) {
+        this.local_departure = local_departure;
+        this.local_arrival = local_arrival;
+        this.flyFrom = flyFrom;
+        this.flyTo = flyTo;
+        this.duration = duration;
+        this.fare = fare;
+        this.airlines = airlines;
+
     }
 
-    public void setDepartureDate(Date departureDate) {
-        this.departureDate = departureDate;
+
+    public String getLocal_departure() {
+        return local_departure;
     }
 
-    public Date getArrivalDate() {
-        return arrivalDate;
+    public void setLocal_departure(String local_departure) {
+        this.local_departure = local_departure;
     }
 
-    public void setArrivalDate(Date arrivalDate) {
-        this.arrivalDate = arrivalDate;
+    public String getLocal_arrival() {
+        return local_arrival;
     }
 
-    public String getDepartureAirport() {
-        return departureAirport;
+    public void setLocal_arrival(String local_arrival) {
+        this.local_arrival = local_arrival;
     }
 
-    public void setDepartureAirport(String departureAirport) {
-        this.departureAirport = departureAirport;
+    public String getFlyFrom() {
+        return flyFrom;
     }
 
-    public String getArrivalAirport() {
-        return arrivalAirport;
+    public void setFlyFrom(String flyFrom) {
+        this.flyFrom = flyFrom;
     }
 
-    public void setArrivalAirport(String arrivalAirport) {
-        this.arrivalAirport = arrivalAirport;
+    public String getFlyTo() {
+        return flyTo;
+    }
+
+    public void setFlyTo(String flyTo) {
+        this.flyTo = flyTo;
+    }
+
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Duration duration) {
+        this.duration = duration;
+    }
+
+    public Fare getFare() {
+        return fare;
+    }
+
+    public void setFare(Fare fare) {
+        this.fare = fare;
+    }
+
+    public List<String> getAirline() {
+        return airlines;
+    }
+
+    public void setAirline(List<String> airlines) {
+        this.airlines = airlines;
+    }
+
+
+    @Override
+    public String toString() {
+        return "FlightDTO{" +
+                "local_departure='" + local_departure + '\'' +
+                ", local_arrival='" + local_arrival + '\'' +
+                ", flyFrom='" + flyFrom + '\'' +
+                ", flyTo='" + flyTo + '\'' +
+                ", duration='" + duration + '\'' +
+                ", fare='" + fare + '\'' +
+                ", airlines=" + airlines +
+                '}';
     }
 }

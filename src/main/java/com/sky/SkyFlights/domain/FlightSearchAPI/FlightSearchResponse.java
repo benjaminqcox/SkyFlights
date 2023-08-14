@@ -30,7 +30,7 @@ public class FlightSearchResponse {
     @JsonProperty("fx_rate")
     private Double fxRate;
     @JsonProperty("data")
-    private List<Datum> data;
+    public List<Datum> data;
     @JsonProperty("_results")
     private Integer results;
     @JsonIgnore
