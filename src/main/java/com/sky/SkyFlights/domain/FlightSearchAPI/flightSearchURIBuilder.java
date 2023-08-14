@@ -28,4 +28,20 @@ public class flightSearchURIBuilder {
         return uri;
     };
 
+    public static String uriBuilderFiltered() {
+        uri = "&max_fly_duration=" + APIQueryParams.getMaxFlyDuration()
+                + "&ret_from_diff_city=" + APIQueryParams.getReturnFromDifferentCity()
+                + "&ret_to_diff_city=" + APIQueryParams.getReturnToDifferentCity()
+                + "&one_for_city=" + APIQueryParams.getOneForCity()
+                + "&one_per_date=" + APIQueryParams.getOnePerDate()
+                + "&adult_hold_bag=" + APIQueryParams.getAdultHoldBag()
+                + "&adult_hand_bag=" + APIQueryParams.getAdultHandBag()
+                + "&partner_market=" + APIQueryParams.getPartnerMarket()
+                + "&locale=" + APIQueryParams.getSearchLocale()
+                + "&max_sector_stopovers=" + APIQueryParams.getMaxSectorStopovers()
+                + "&vehicle_type=" + APIQueryParams.getVehicleType()
+                + "&limit=" + APIQueryParams.getReturnLimits();
+        return uri;
+    };
+
 }
