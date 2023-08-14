@@ -5,6 +5,7 @@ import com.sky.SkyFlights.domain.FlightSearchAPI.Fare;
 
 import java.util.List;
 
+// class for only the relevant information for displaying a flight on the front end
 public class FlightDTO {
 
 
