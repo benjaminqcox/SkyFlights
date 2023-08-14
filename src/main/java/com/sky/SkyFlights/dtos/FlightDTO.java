@@ -13,11 +13,15 @@ public class FlightDTO {
 
      String local_arrival;
 
+     String cityFrom;
+
      String flyFrom;
+
+     String cityTo;
 
      String flyTo;
 
-     Duration duration;
+     Long duration;
 
      Fare fare;
 
@@ -26,11 +30,11 @@ public class FlightDTO {
 
 
 
+
     public FlightDTO() {
     }
 
-
-    public FlightDTO(String local_departure, String local_arrival, String flyFrom, String flyTo, Duration duration, Fare fare, List<String> airlines, String departureTime, String arrivalTime) {
+    public FlightDTO(String local_departure, String local_arrival, String flyFrom, String flyTo, Long duration, Fare fare, List<String> airlines, String cityFrom, String cityTo) {
         this.local_departure = local_departure;
         this.local_arrival = local_arrival;
         this.flyFrom = flyFrom;
@@ -38,9 +42,9 @@ public class FlightDTO {
         this.duration = duration;
         this.fare = fare;
         this.airlines = airlines;
-
+        this.cityFrom = cityFrom;
+        this.cityTo = cityTo;
     }
-
 
     public String getLocal_departure() {
         return local_departure;
@@ -74,11 +78,11 @@ public class FlightDTO {
         this.flyTo = flyTo;
     }
 
-    public Duration getDuration() {
+    public Long getDuration() {
         return duration;
     }
 
-    public void setDuration(Duration duration) {
+    public void setDuration(Long duration) {
         this.duration = duration;
     }
 
@@ -98,6 +102,21 @@ public class FlightDTO {
         this.airlines = airlines;
     }
 
+    public String getCityFrom() {
+        return cityFrom;
+    }
+
+    public void setCityFrom(String cityFrom) {
+        this.cityFrom = cityFrom;
+    }
+
+    public String getCityTo() {
+        return cityTo;
+    }
+
+    public void setCityTo(String cityTo) {
+        this.cityTo = cityTo;
+    }
 
     @Override
     public String toString() {
