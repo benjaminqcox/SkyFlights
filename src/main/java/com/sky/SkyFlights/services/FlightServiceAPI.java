@@ -70,7 +70,7 @@ public class FlightServiceAPI implements FlightService{
     }
 
     @Override
-    public List<FlightDTO> getOneWayFlightsFiltered(String flyFrom, String flyTo, String leaveDateFrom, String leaveDateTo, String numberOfAdults, String numberOfChildren, String stopovers, String currency, String priceFrom, String priceTo, String cabin, String weekdaysOnly, String weekendsOnly, String adultHandBag, String adultHoldBag) {
+    public List<FlightDTO> getOneWayFlightsFiltered(String flyFrom, String flyTo, String leaveDateFrom, String leaveDateTo, String numberOfAdults, String numberOfChildren, String stopovers, String currency, String priceFrom, String priceTo, String cabin, String weekdaysOnly, String weekendsOnly) {
         //Handbag and holdbag numbers must match number of adults and children, so for each adult, build handbag and holdbag params with +1
 
 //        APIQueryParams apiQueryParams= new APIQueryParams();
@@ -84,7 +84,7 @@ public class FlightServiceAPI implements FlightService{
 
         FlightSearchResponse response = localApiClient
                 .get()
-                .uri("/v2/search?fly_from=" + flyFrom + "&fly_to=" + flyTo + "&date_from=" + leaveDateFrom + "&date_to=" + leaveDateTo + "&adults=" + numberOfAdults + "&children=" + numberOfChildren + "&max_stopovers=" + stopovers + "&curr=" + currency + "&price_from=" + priceFrom + "&price_to=" + priceTo + "&selected_cabins=" + cabin + "&only_working_days=" + weekdaysOnly + "&only_weekends=" + weekendsOnly + "&adult_hold_bag=" + adultHoldBag + "&adult_hand_bag=" + adultHandBag + flightSearchURIBuilder.uriBuilderFiltered(adultBagString))
+                .uri("/v2/search?fly_from=" + flyFrom + "&fly_to=" + flyTo + "&date_from=" + leaveDateFrom + "&date_to=" + leaveDateTo + "&adults=" + numberOfAdults + "&children=" + numberOfChildren + "&max_stopovers=" + stopovers + "&curr=" + currency + "&price_from=" + priceFrom + "&price_to=" + priceTo + "&selected_cabins=" + cabin + "&only_working_days=" + weekdaysOnly + "&only_weekends=" + weekendsOnly + flightSearchURIBuilder.uriBuilderFiltered(adultBagString))
                 .header("apikey", "9ptw_en0a60KfjnlnslcQcSRz6QjkbQ3")
                 .retrieve()
                 .bodyToMono(FlightSearchResponse.class)
@@ -92,11 +92,8 @@ public class FlightServiceAPI implements FlightService{
 
         // create a list of flightDTOs, each their own flight option, with only the relevant information needed for the front-end
         String uri = "/v2/search?fly_from=" + flyFrom + "&fly_to=" + flyTo + "&date_from=" + leaveDateFrom + "&date_to=" + leaveDateTo + "&adults=" + numberOfAdults + "&children=" + numberOfChildren + "&max_stopovers=" + stopovers + "&curr=" + currency + "&price_from=" + priceFrom + "&price_to=" + priceTo + "&selected_cabins=" + cabin + "&only_working_days=" + weekdaysOnly + "&only_weekends=" + weekendsOnly + flightSearchURIBuilder.uriBuilderFiltered(adultBagString);
-        System.out.println(uri);
 
         List<FlightDTO> flightDTOs = new ArrayList<>();
-        System.out.println(response);
-        System.out.println(response.getData());
 
         for (int i = 0; i < response.getData().size(); i++) {
             FlightDTO flightDTO = new FlightDTO();

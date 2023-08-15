@@ -41,6 +41,8 @@ public class FlightSearchURIBuilder {
                 + "&ret_to_diff_city=" + apiQueryParams.getReturnToDifferentCity()
                 + "&one_for_city=" + apiQueryParams.getOneForCity()
                 + "&one_per_date=" + apiQueryParams.getOnePerDate()
+                + "&adult_hold_bag=" + apiQueryParams.getAdultHoldBag()
+                + "&adult_hand_bag=" + apiQueryParams.getAdultHandBag()
                 + "&partner_market=" + apiQueryParams.getPartnerMarket()
                 + "&locale=" + apiQueryParams.getSearchLocale()
                 + "&max_sector_stopovers=" + apiQueryParams.getMaxSectorStopovers()
