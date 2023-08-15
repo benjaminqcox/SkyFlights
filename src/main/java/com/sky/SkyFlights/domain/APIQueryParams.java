@@ -2,47 +2,47 @@ package com.sky.SkyFlights.domain;
 
 public class APIQueryParams {
 
-    private static String locale = "en-US";
+    private String locale = "en-US";
 
-    private static String locationTypes = "airport";
+    private String locationTypes = "airport";
 
-    private static String returnLimits = "5";
+    private String returnLimits = "5";
 
-    private static String activeOnly = "true";
+    private String activeOnly = "true";
 
-    private static String searchLocale = "gb";
+    private String searchLocale = "gb";
 
-    private static String maxFlyDuration = "24";
+    private String maxFlyDuration = "24";
 
-    private static String returnFromDifferentCity = "false";
+    private String returnFromDifferentCity = "false";
 
-    private static String returnToDifferentCity = "false";
+    private String returnToDifferentCity = "false";
 
-    private static String oneForCity = "0";
+    private String oneForCity = "0";
 
-    private static String onePerDate = "0";
+    private String onePerDate = "0";
 
-    private static String numberOfAdults = "2";
+    private String numberOfAdults = "2";
 
-    private static String selectedCabins = "M";
+    private String selectedCabins = "M";
 
-    private static String adultHoldBag = "1,0";
+    private String adultHoldBag = "1,0";
 
-    private static String adultHandBag = "1,1";
+    private String adultHandBag = "1,1";
 
-    private static String onlyWeekDays = "false";
+    private String onlyWeekDays = "false";
 
-    private static String onlyWeekends = "false";
+    private String onlyWeekends = "false";
 
-    private static String partnerMarket = "us";
+    private String partnerMarket = "us";
 
-    private static String currency = "GBP";
+    private String currency = "GBP";
 
-    private static String maxStopovers = "1";
+    private String maxStopovers = "1";
 
-    private static String maxSectorStopovers = "1";
+    private String maxSectorStopovers = "1";
 
-    private static String vehicleType = "aircraft";
+    private String vehicleType = "aircraft";
 
 
 
@@ -80,171 +80,198 @@ public class APIQueryParams {
         this.vehicleType = vehicleType;
     }
 
-    public static String getMaxFlyDuration() {
+    public String getMaxFlyDuration() {
         return maxFlyDuration;
     }
 
-    public static void setMaxFlyDuration(String maxFlyDuration) {
-        APIQueryParams.maxFlyDuration = maxFlyDuration;
+    public void setMaxFlyDuration(String maxFlyDuration) {
+        this.maxFlyDuration = maxFlyDuration;
     }
 
-    public static String getLocale() {
+    public String getLocale() {
         return locale;
     }
 
-    public static void setLocale(String locale) {
-        APIQueryParams.locale = locale;
+    public void setLocale(String locale) {
+        this.locale = locale;
     }
 
-    public static String getLocationTypes() {
+    public String getLocationTypes() {
         return locationTypes;
     }
 
-    public static void setLocationTypes(String locationTypes) {
-        APIQueryParams.locationTypes = locationTypes;
+    public void setLocationTypes(String locationTypes) {
+        this.locationTypes = locationTypes;
     }
 
-    public static String getReturnLimits() {
+    public String getReturnLimits() {
         return returnLimits;
     }
 
-    public static void setReturnLimits(String returnLimits) {
-        APIQueryParams.returnLimits = returnLimits;
+    public void setReturnLimits(String returnLimits) {
+        this.returnLimits = returnLimits;
     }
 
-    public static String getActiveOnly() {
+    public String getActiveOnly() {
         return activeOnly;
     }
 
-    public static void setActiveOnly(String activeOnly) {
-        APIQueryParams.activeOnly = activeOnly;
+    public void setActiveOnly(String activeOnly) {
+        this.activeOnly = activeOnly;
     }
 
-    public static String getReturnFromDifferentCity() {
+    public  String getReturnFromDifferentCity() {
         return returnFromDifferentCity;
     }
 
-    public static void setReturnFromDifferentCity(String returnFromDifferentCity) {
-        APIQueryParams.returnFromDifferentCity = returnFromDifferentCity;
+    public void setReturnFromDifferentCity(String returnFromDifferentCity) {
+        this.returnFromDifferentCity = returnFromDifferentCity;
     }
 
-    public static String getReturnToDifferentCity() {
+    public String getReturnToDifferentCity() {
         return returnToDifferentCity;
     }
 
-    public static void setReturnToDifferentCity(String returnToDifferentCity) {
-        APIQueryParams.returnToDifferentCity = returnToDifferentCity;
+    public void setReturnToDifferentCity(String returnToDifferentCity) {
+        this.returnToDifferentCity = returnToDifferentCity;
     }
 
-    public static String getOneForCity() {
+    public String getOneForCity() {
         return oneForCity;
     }
 
-    public static void setOneForCity(String oneForCity) {
-        APIQueryParams.oneForCity = oneForCity;
+    public void setOneForCity(String oneForCity) {
+        this.oneForCity = oneForCity;
     }
 
-    public static String getOnePerDate() {
+    public String getOnePerDate() {
         return onePerDate;
     }
 
-    public static void setOnePerDate(String onePerDate) {
-        APIQueryParams.onePerDate = onePerDate;
+    public void setOnePerDate(String onePerDate) {
+        this.onePerDate = onePerDate;
     }
 
-    public static String getNumberOfAdults() {
+    public String getNumberOfAdults() {
         return numberOfAdults;
     }
 
-    public static void setNumberOfAdults(String numberOfAdults) {
-        APIQueryParams.numberOfAdults = numberOfAdults;
+    public void setNumberOfAdults(String numberOfAdults) {
+        this.numberOfAdults = numberOfAdults;
     }
 
-    public static String getSelectedCabins() {
+    public String getSelectedCabins() {
         return selectedCabins;
     }
 
-    public static void setSelectedCabins(String selectedCabins) {
-        APIQueryParams.selectedCabins = selectedCabins;
+    public void setSelectedCabins(String selectedCabins) {
+        this.selectedCabins = selectedCabins;
     }
 
-    public static String getAdultHoldBag() {
+    public String getAdultHoldBag() {
         return adultHoldBag;
     }
 
-    public static void setAdultHoldBag(String adultHoldBag) {
-        APIQueryParams.adultHoldBag = adultHoldBag;
+    public void setAdultHoldBag(String adultHoldBag) {
+        this.adultHoldBag = adultHoldBag;
     }
 
-    public static String getAdultHandBag() {
+    public String getAdultHandBag() {
         return adultHandBag;
     }
 
-    public static void setAdultHandBag(String adultHandBag) {
-        APIQueryParams.adultHandBag = adultHandBag;
+    public void setAdultHandBag(String adultHandBag) {
+        this.adultHandBag = adultHandBag;
     }
 
-    public static String getOnlyWeekDays() {
+    public String getOnlyWeekDays() {
         return onlyWeekDays;
     }
 
-    public static void setOnlyWeekDays(String onlyWeekDays) {
-        APIQueryParams.onlyWeekDays = onlyWeekDays;
+    public void setOnlyWeekDays(String onlyWeekDays) {
+        this.onlyWeekDays = onlyWeekDays;
     }
 
-    public static String getOnlyWeekends() {
+    public String getOnlyWeekends() {
         return onlyWeekends;
     }
 
-    public static void setOnlyWeekends(String onlyWeekends) {
-        APIQueryParams.onlyWeekends = onlyWeekends;
+    public void setOnlyWeekends(String onlyWeekends) {
+        this.onlyWeekends = onlyWeekends;
     }
 
-    public static String getPartnerMarket() {
+    public String getPartnerMarket() {
         return partnerMarket;
     }
 
-    public static void setPartnerMarket(String partnerMarket) {
-        APIQueryParams.partnerMarket = partnerMarket;
+    public void setPartnerMarket(String partnerMarket) {
+        this.partnerMarket = partnerMarket;
     }
 
-    public static String getCurrency() {
+    public String getCurrency() {
         return currency;
     }
 
-    public static void setCurrency(String currency) {
-        APIQueryParams.currency = currency;
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 
-    public static String getMaxStopovers() {
+    public String getMaxStopovers() {
         return maxStopovers;
     }
 
-    public static void setMaxStopovers(String maxStopovers) {
-        APIQueryParams.maxStopovers = maxStopovers;
+    public void setMaxStopovers(String maxStopovers) {
+        this.maxStopovers = maxStopovers;
     }
 
-    public static String getMaxSectorStopovers() {
+    public String getMaxSectorStopovers() {
         return maxSectorStopovers;
     }
 
-    public static void setMaxSectorStopovers(String maxSectorStopovers) {
-        APIQueryParams.maxSectorStopovers = maxSectorStopovers;
+    public void setMaxSectorStopovers(String maxSectorStopovers) {
+        this.maxSectorStopovers = maxSectorStopovers;
     }
 
-    public static String getVehicleType() {
+    public String getVehicleType() {
         return vehicleType;
     }
 
-    public static void setVehicleType(String vehicleType) {
-        APIQueryParams.vehicleType = vehicleType;
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
     }
 
-    public static String getSearchLocale() {
+    public String getSearchLocale() {
         return searchLocale;
     }
 
-    public static void setSearchLocale(String searchLocale) {
-        APIQueryParams.searchLocale = searchLocale;
+    public void setSearchLocale(String searchLocale) {
+        this.searchLocale = searchLocale;
+    }
+
+    @Override
+    public String toString() {
+        return "APIQueryParams{" +
+                "locale='" + locale + '\'' +
+                ", locationTypes='" + locationTypes + '\'' +
+                ", returnLimits='" + returnLimits + '\'' +
+                ", activeOnly='" + activeOnly + '\'' +
+                ", searchLocale='" + searchLocale + '\'' +
+                ", maxFlyDuration='" + maxFlyDuration + '\'' +
+                ", returnFromDifferentCity='" + returnFromDifferentCity + '\'' +
+                ", returnToDifferentCity='" + returnToDifferentCity + '\'' +
+                ", oneForCity='" + oneForCity + '\'' +
+                ", onePerDate='" + onePerDate + '\'' +
+                ", numberOfAdults='" + numberOfAdults + '\'' +
+                ", selectedCabins='" + selectedCabins + '\'' +
+                ", adultHoldBag='" + adultHoldBag + '\'' +
+                ", adultHandBag='" + adultHandBag + '\'' +
+                ", onlyWeekDays='" + onlyWeekDays + '\'' +
+                ", onlyWeekends='" + onlyWeekends + '\'' +
+                ", partnerMarket='" + partnerMarket + '\'' +
+                ", currency='" + currency + '\'' +
+                ", maxStopovers='" + maxStopovers + '\'' +
+                ", maxSectorStopovers='" + maxSectorStopovers + '\'' +
+                ", vehicleType='" + vehicleType + '\'' +
+                '}';
     }
 }
