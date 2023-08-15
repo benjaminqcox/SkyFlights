@@ -161,6 +161,7 @@ public class FlightDTO {
                 '}';
     }
 
+    //builder pattern allows for DTOs to be made without every parameter (such as availability, which the api doesn't always return) and to clean up service code
     public static class FlightDTOBuilder{
 
         String local_departure;
