@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/booking")
 public class BookingController {
 
@@ -110,6 +111,7 @@ public class BookingController {
             flightDTO.setDuration(response.getData().get(i).getDuration().getTotal().longValue());
             flightDTO.setFare(response.getData().get(i).getFare());
             flightDTO.setAirline(response.getData().get(i).getAirlines());
+            flightDTO.setAvailability(response.getData().get(i).getAvailability());
 
 
             flightDTOs.add(flightDTO);
