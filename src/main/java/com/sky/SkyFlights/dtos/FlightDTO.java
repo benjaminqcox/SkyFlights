@@ -47,6 +47,19 @@ public class FlightDTO {
         this.availability = availability;
     }
 
+    public FlightDTO(FlightDTOBuilder builder) {
+        this.local_departure = builder.local_departure;
+        this.local_arrival = builder.local_arrival;
+        this.cityFrom = builder.cityFrom;
+        this.flyFrom = builder.flyFrom;
+        this.cityTo = builder.cityTo;
+        this.flyTo = builder.flyTo;
+        this.duration = builder.duration;
+        this.fare = builder.fare;
+        this.airlines = builder.airlines;
+        this.availability = builder.availability;
+    }
+
     public String getLocal_departure() {
         return local_departure;
     }
@@ -146,5 +159,84 @@ public class FlightDTO {
                 ", fare='" + fare + '\'' +
                 ", airlines=" + airlines +
                 '}';
+    }
+
+    public static class FlightDTOBuilder{
+
+        String local_departure;
+
+        String local_arrival;
+
+        String cityFrom;
+
+        String flyFrom;
+
+        String cityTo;
+
+        String flyTo;
+
+        Long duration;
+
+        Fare fare;
+
+        List<String> airlines;
+
+        Object availability;
+
+        public FlightDTOBuilder setLocalDeparture(String local_departure) {
+            this.local_departure = local_departure;
+            return this;
+        }
+        public FlightDTOBuilder setLocalArrival(String local_arrival) {
+            this.local_arrival = local_arrival;
+            return this;
+        }
+        public FlightDTOBuilder setCityFrom(String cityFrom) {
+            this.cityFrom = cityFrom;
+            return this;
+        }
+
+        public FlightDTOBuilder setFlyFrom(String flyFrom) {
+            this.flyFrom = flyFrom;
+            return this;
+        }
+
+        public FlightDTOBuilder setCityTo(String cityTo) {
+            this.cityTo = cityTo;
+            return this;
+        }
+
+        public FlightDTOBuilder setFlyTo(String flyTo) {
+            this.flyTo = flyTo;
+            return this;
+        }
+        public FlightDTOBuilder set(String local_departure) {
+            this.local_departure = local_departure;
+            return this;
+        }
+
+        public FlightDTOBuilder setDuration(Long duration) {
+            this.duration = duration;
+            return this;
+        }
+
+        public FlightDTOBuilder setFare(Fare fare) {
+            this.fare = fare;
+            return this;
+        }
+
+        public FlightDTOBuilder setAirlines(List<String> airlines) {
+            this.airlines = airlines;
+            return this;
+        }
+
+        public FlightDTOBuilder setAvailability(Object availability) {
+            this.availability = availability;
+            return this;
+        }
+
+        public FlightDTO build() {
+            return new FlightDTO(this);
+        }
     }
 }

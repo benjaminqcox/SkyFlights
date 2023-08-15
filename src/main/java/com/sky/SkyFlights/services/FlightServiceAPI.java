@@ -96,20 +96,10 @@ public class FlightServiceAPI implements FlightService{
         List<FlightDTO> flightDTOs = new ArrayList<>();
 
         for (int i = 0; i < response.getData().size(); i++) {
-            FlightDTO flightDTO = new FlightDTO();
 
+            //Use builder design pattern to create a new DTO and allow DTOs to be created without every param
             //getData() returns a list of Datums, so needs getData().get(i) to retrieve each Datum within the list
-            flightDTO.setLocal_departure(response.getData().get(i).getLocalDeparture());
-            flightDTO.setLocal_arrival(response.getData().get(i).getLocalArrival());
-            flightDTO.setFlyFrom(response.getData().get(i).getFlyFrom());
-            flightDTO.setCityFrom(response.getData().get(i).getCityFrom());
-            flightDTO.setFlyTo(response.getData().get(i).getFlyTo());
-            flightDTO.setCityTo(response.getData().get(i).getCityTo());
-            flightDTO.setDuration(response.getData().get(i).getDuration().getTotal().longValue());
-            flightDTO.setFare(response.getData().get(i).getFare());
-            flightDTO.setAirline(response.getData().get(i).getAirlines());
-            flightDTO.setAvailability(response.getData().get(i).getAvailability());
-
+            FlightDTO flightDTO = new FlightDTO.FlightDTOBuilder().setLocalDeparture(response.getData().get(i).getLocalDeparture()).setLocalArrival(response.getData().get(i).getLocalArrival()).setFlyFrom(response.getData().get(i).getFlyFrom()).setCityFrom(response.getData().get(i).getCityFrom()).setFlyTo(response.getData().get(i).getFlyTo()).setCityTo(response.getData().get(i).getCityTo()).setDuration(response.getData().get(i).getDuration().getTotal().longValue()).setFare(response.getData().get(i).getFare()).setAirlines(response.getData().get(i).getAirlines()).setAvailability(response.getData().get(i).getAvailability()).build();
 
             flightDTOs.add(flightDTO);
         }
