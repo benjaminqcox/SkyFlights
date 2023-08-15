@@ -16,7 +16,10 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Integer.*;
+
 @RestController
+@CrossOrigin
 @RequestMapping("/booking")
 public class BookingController {
 
@@ -27,6 +30,7 @@ public class BookingController {
 //    }
 
     private final WebClient localApiClient;
+    private com.sky.SkyFlights.domain.APIQueryParams APIQueryParams;
 
 
     @Autowired
@@ -49,6 +53,7 @@ public class BookingController {
 
     @GetMapping("/get/")
     public List<FlightDTO> getOneWayFlights(@RequestParam(value = "flyFrom") String flyFrom, @RequestParam("flyTo") String flyTo, @RequestParam("leaveDateFrom") String leaveDateFrom, @RequestParam("leaveDateTo") String leaveDateTo) {
+
 
         // return a Mono of FlightSearchResponse, which will contain a huge amount of data
         FlightSearchResponse response = localApiClient
@@ -82,7 +87,15 @@ public class BookingController {
 
     // filtered api will be used to
     @GetMapping("/getFiltered/")
-    public List<FlightDTO> getOneWayFlightsFiltered(@RequestParam(value = "flyFrom", required = true) String flyFrom, @RequestParam(value = "flyTo", required = true) String flyTo, @RequestParam(value = "leaveDateFrom", required = true) String leaveDateFrom, @RequestParam(value = "leaveDateTo", required = true) String leaveDateTo, @RequestParam(value = "numberOfAdults", defaultValue = "2") String numberOfAdults, @RequestParam(value = "numberOfChildren", defaultValue = "0") String numberOfChildren, @RequestParam(value = "stopovers", defaultValue = "0") String stopovers, @RequestParam(value = "currency", defaultValue = "GBP") String currency, @RequestParam(value = "priceFrom", defaultValue = "0") String priceFrom, @RequestParam(value = "priceTo", defaultValue = "20000") String priceTo, @RequestParam(value = "cabin", defaultValue = "M") String cabin, @RequestParam(value = "weekdaysOnly", defaultValue = "false") String weekdaysOnly, @RequestParam(value = "weekendsOnly", defaultValue = "false") String weekendsOnly) {
+    public List<FlightDTO> getOneWayFlightsFiltered(@RequestParam(value = "flyFrom", required = true) String flyFrom, @RequestParam(value = "flyTo", required = true) String flyTo, @RequestParam(value = "leaveDateFrom", required = true) String leaveDateFrom, @RequestParam(value = "leaveDateTo", required = true) String leaveDateTo, @RequestParam(value = "numberOfAdults") String numberOfAdults, @RequestParam(value = "numberOfChildren", defaultValue = "0") String numberOfChildren, @RequestParam(value = "stopovers", defaultValue = "0") String stopovers, @RequestParam(value = "currency", defaultValue = "GBP") String currency, @RequestParam(value = "priceFrom", defaultValue = "0") String priceFrom, @RequestParam(value = "priceTo", defaultValue = "20000") String priceTo, @RequestParam(value = "cabin", defaultValue = "M") String cabin, @RequestParam(value = "weekdaysOnly", defaultValue = "false") String weekdaysOnly, @RequestParam(value = "weekendsOnly", defaultValue = "false") String weekendsOnly) {
+
+        //Handbag and holdbag numbers must match number of adults and children, so for each adult, build handbag and holdbag params with +1
+        String adultBagString = "1";
+        for(int i = 1; i < parseInt(numberOfAdults); i++) {
+            adultBagString += ",1";
+        }
+        this.APIQueryParams.setAdultHoldBag(adultBagString);
+        this.APIQueryParams.setAdultHandBag(adultBagString);
 
         FlightSearchResponse response = localApiClient
                 .get()
@@ -110,6 +123,7 @@ public class BookingController {
             flightDTO.setDuration(response.getData().get(i).getDuration().getTotal().longValue());
             flightDTO.setFare(response.getData().get(i).getFare());
             flightDTO.setAirline(response.getData().get(i).getAirlines());
+            flightDTO.setAvailability(response.getData().get(i).getAvailability());
 
 
             flightDTOs.add(flightDTO);

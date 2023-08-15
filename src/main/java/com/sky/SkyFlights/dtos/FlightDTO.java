@@ -27,23 +27,24 @@ public class FlightDTO {
 
      List<String> airlines;
 
-
+     Object availability;
 
 
 
     public FlightDTO() {
     }
 
-    public FlightDTO(String local_departure, String local_arrival, String flyFrom, String flyTo, Long duration, Fare fare, List<String> airlines, String cityFrom, String cityTo) {
+    public FlightDTO(String local_departure, String local_arrival, String cityFrom, String flyFrom, String cityTo, String flyTo, Long duration, Fare fare, List<String> airlines, Long availability) {
         this.local_departure = local_departure;
         this.local_arrival = local_arrival;
+        this.cityFrom = cityFrom;
         this.flyFrom = flyFrom;
+        this.cityTo = cityTo;
         this.flyTo = flyTo;
         this.duration = duration;
         this.fare = fare;
         this.airlines = airlines;
-        this.cityFrom = cityFrom;
-        this.cityTo = cityTo;
+        this.availability = availability;
     }
 
     public String getLocal_departure() {
@@ -116,6 +117,22 @@ public class FlightDTO {
 
     public void setCityTo(String cityTo) {
         this.cityTo = cityTo;
+    }
+
+    public List<String> getAirlines() {
+        return airlines;
+    }
+
+    public void setAirlines(List<String> airlines) {
+        this.airlines = airlines;
+    }
+
+    public Object getAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(Object availability) {
+        this.availability = availability;
     }
 
     @Override

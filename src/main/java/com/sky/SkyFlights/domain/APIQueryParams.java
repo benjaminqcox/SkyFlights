@@ -45,6 +45,7 @@ public class APIQueryParams {
     private static String vehicleType = "aircraft";
 
 
+
     public APIQueryParams() {
     }
 

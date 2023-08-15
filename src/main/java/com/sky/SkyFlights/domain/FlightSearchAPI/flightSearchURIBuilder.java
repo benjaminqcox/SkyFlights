@@ -41,6 +41,7 @@ public class flightSearchURIBuilder {
                 + "&max_sector_stopovers=" + APIQueryParams.getMaxSectorStopovers()
                 + "&vehicle_type=" + APIQueryParams.getVehicleType()
                 + "&limit=" + APIQueryParams.getReturnLimits();
+
         return uri;
     };
 
