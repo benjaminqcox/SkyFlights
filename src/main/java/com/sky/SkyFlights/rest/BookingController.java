@@ -2,17 +2,16 @@ package com.sky.SkyFlights.rest;
 
 
 //import com.sky.SkyFlights.services.BookingService;
-import com.sky.SkyFlights.domain.APIQueryParams;
 import com.sky.SkyFlights.domain.FlightSearchAPI.FlightSearchResponse;
-import com.sky.SkyFlights.domain.FlightSearchAPI.flightSearchURIBuilder;
+import com.sky.SkyFlights.domain.FlightSearchAPI.FlightSearchURIBuilder;
 import com.sky.SkyFlights.domain.apiResponseDomain.LocationResponse;
 import com.sky.SkyFlights.domain.apiResponseDomain.locationSearchURIBuilder;
 import com.sky.SkyFlights.dtos.FlightDTO;
+import com.sky.SkyFlights.services.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,111 +22,41 @@ import static java.lang.Integer.*;
 @RequestMapping("/booking")
 public class BookingController {
 
-//    private BookingService service;
-//
-//    public BookingController(BookingService service) {
-//        this.service = service;
-//    }
+    private FlightService service;
 
-    private final WebClient localApiClient;
+    public BookingController(FlightService service) {
+        this.service = service;
+    }
+
+
     private com.sky.SkyFlights.domain.APIQueryParams APIQueryParams;
 
 
-    @Autowired
-    public BookingController(WebClient localApiClient) {
-        this.localApiClient = localApiClient;
-    }
 
-    @GetMapping("/get/{term}")
-    public LocationResponse getLocation(@PathVariable String term) {
-         LocationResponse response = localApiClient
-                .get()
-                .uri("/locations/query?term=" + term + locationSearchURIBuilder.uriBuilder())
-                .header("apikey", "9ptw_en0a60KfjnlnslcQcSRz6QjkbQ3")
-                .retrieve()
-                .bodyToMono(LocationResponse.class)
-                .block();
-        return response;
 
-    }
+//    @GetMapping("/get/{term}")
+//    public LocationResponse getLocation(@PathVariable String term) {
+//         LocationResponse response = localApiClient
+//                .get()
+//                .uri("/locations/query?term=" + term + locationSearchURIBuilder.uriBuilder())
+//                .header("apikey", "9ptw_en0a60KfjnlnslcQcSRz6QjkbQ3")
+//                .retrieve()
+//                .bodyToMono(LocationResponse.class)
+//                .block();
+//        return response;
+//
+//    }
 
     @GetMapping("/get/")
     public List<FlightDTO> getOneWayFlights(@RequestParam(value = "flyFrom") String flyFrom, @RequestParam("flyTo") String flyTo, @RequestParam("leaveDateFrom") String leaveDateFrom, @RequestParam("leaveDateTo") String leaveDateTo) {
 
-
-        // return a Mono of FlightSearchResponse, which will contain a huge amount of data
-        FlightSearchResponse response = localApiClient
-                .get()
-                .uri("/v2/search?fly_from=" + flyFrom + "&fly_to=" + flyTo + "&date_from=" + leaveDateFrom + "&date_to=" + leaveDateTo + flightSearchURIBuilder.uriBuilder())
-                .header("apikey", "9ptw_en0a60KfjnlnslcQcSRz6QjkbQ3")
-                .retrieve()
-                .bodyToMono(FlightSearchResponse.class)
-                .block();
-
-        // create a list of flightDTOs, each their own flight option, with only the relevant information needed for the front-end
-
-        List<FlightDTO> flightDTOs = new ArrayList<>();
-
-        for (int i = 0; i < response.getData().size(); i++) {
-            FlightDTO flightDTO = new FlightDTO();
-
-            //getData() returns a list of Datums, so needs getData().get(i) to retrieve each Datum within the list
-            flightDTO.setLocal_departure(response.getData().get(i).getLocalDeparture());
-            flightDTO.setLocal_arrival(response.getData().get(i).getLocalArrival());
-            flightDTO.setFlyFrom(response.getData().get(i).getFlyFrom());
-            flightDTO.setFlyTo(response.getData().get(i).getFlyTo());
-            flightDTO.setDuration(response.getData().get(i).getDuration().getTotal().longValue());
-            flightDTO.setFare(response.getData().get(i).getFare());
-            flightDTO.setAirline(response.getData().get(i).getAirlines());
-
-            flightDTOs.add(flightDTO);
-        }
-        return flightDTOs;
+        return this.service.getOneWayFlights(flyFrom, flyTo, leaveDateFrom, leaveDateTo);
     }
 
-    // filtered api will be used to
+
     @GetMapping("/getFiltered/")
-    public List<FlightDTO> getOneWayFlightsFiltered(@RequestParam(value = "flyFrom", required = true) String flyFrom, @RequestParam(value = "flyTo", required = true) String flyTo, @RequestParam(value = "leaveDateFrom", required = true) String leaveDateFrom, @RequestParam(value = "leaveDateTo", required = true) String leaveDateTo, @RequestParam(value = "numberOfAdults", required = true) String numberOfAdults, @RequestParam(value = "numberOfChildren", defaultValue = "0") String numberOfChildren, @RequestParam(value = "stopovers", defaultValue = "0") String stopovers, @RequestParam(value = "currency", defaultValue = "GBP") String currency, @RequestParam(value = "priceFrom", defaultValue = "0") String priceFrom, @RequestParam(value = "priceTo", defaultValue = "20000") String priceTo, @RequestParam(value = "cabin", defaultValue = "M") String cabin, @RequestParam(value = "weekdaysOnly", defaultValue = "false") String weekdaysOnly, @RequestParam(value = "weekendsOnly", defaultValue = "false") String weekendsOnly) {
+    public List<FlightDTO> getOneWayFlightsFiltered(@RequestParam(value = "flyFrom", required = true) String flyFrom, @RequestParam(value = "flyTo", required = true) String flyTo, @RequestParam(value = "leaveDateFrom", required = true) String leaveDateFrom, @RequestParam(value = "leaveDateTo", required = true) String leaveDateTo, @RequestParam(value = "numberOfAdults", required = true) String numberOfAdults, @RequestParam(value = "numberOfChildren", defaultValue = "0") String numberOfChildren, @RequestParam(value = "stopovers", defaultValue = "0") String stopovers, @RequestParam(value = "currency", defaultValue = "GBP") String currency, @RequestParam(value = "priceFrom", defaultValue = "0") String priceFrom, @RequestParam(value = "priceTo", defaultValue = "20000") String priceTo, @RequestParam(value = "cabin", defaultValue = "M") String cabin, @RequestParam(value = "weekdaysOnly", defaultValue = "false") String weekdaysOnly, @RequestParam(value = "weekendsOnly", defaultValue = "false") String weekendsOnly, @RequestParam(value="adultHandBag", defaultValue = "1,0") String adultHandBag, @RequestParam(value="adultHoldBag", defaultValue = "1,0") String adultHoldBag) {
 
-        //Handbag and holdbag numbers must match number of adults and children, so for each adult, build handbag and holdbag params with +1
-        String adultBagString = "1";
-        for(int i = 0; i < parseInt(numberOfAdults) - 1; i++) {
-            adultBagString += ",1";
-        }
-        this.APIQueryParams.setAdultHoldBag(adultBagString);
-        this.APIQueryParams.setAdultHandBag(adultBagString);
-
-        FlightSearchResponse response = localApiClient
-                .get()
-                .uri("/v2/search?fly_from=" + flyFrom + "&fly_to=" + flyTo + "&date_from=" + leaveDateFrom + "&date_to=" + leaveDateTo + "&adults=" + numberOfAdults + "&children=" + numberOfChildren + "&max_stopovers=" + stopovers + "&curr=" + currency + "&price_from=" + priceFrom + "&price_to=" + priceTo + "&selected_cabins=" + cabin + "&only_working_days=" + weekdaysOnly + "&only_weekends=" + weekendsOnly + flightSearchURIBuilder.uriBuilderFiltered())
-                .header("apikey", "9ptw_en0a60KfjnlnslcQcSRz6QjkbQ3")
-                .retrieve()
-                .bodyToMono(FlightSearchResponse.class)
-                .block();
-
-        // create a list of flightDTOs, each their own flight option, with only the relevant information needed for the front-end
-
-        List<FlightDTO> flightDTOs = new ArrayList<>();
-
-
-        for (int i = 0; i < response.getData().size(); i++) {
-            FlightDTO flightDTO = new FlightDTO();
-
-            //getData() returns a list of Datums, so needs getData().get(i) to retrieve each Datum within the list
-            flightDTO.setLocal_departure(response.getData().get(i).getLocalDeparture());
-            flightDTO.setLocal_arrival(response.getData().get(i).getLocalArrival());
-            flightDTO.setFlyFrom(response.getData().get(i).getFlyFrom());
-            flightDTO.setCityFrom(response.getData().get(i).getCityFrom());
-            flightDTO.setFlyTo(response.getData().get(i).getFlyTo());
-            flightDTO.setCityTo(response.getData().get(i).getCityTo());
-            flightDTO.setDuration(response.getData().get(i).getDuration().getTotal().longValue());
-            flightDTO.setFare(response.getData().get(i).getFare());
-            flightDTO.setAirline(response.getData().get(i).getAirlines());
-            flightDTO.setAvailability(response.getData().get(i).getAvailability());
-
-
-            flightDTOs.add(flightDTO);
-        }
-        return flightDTOs;
+        return this.service.getOneWayFlightsFiltered(flyFrom, flyTo, leaveDateFrom, leaveDateTo, numberOfAdults, numberOfChildren, stopovers, currency, priceFrom, priceTo, cabin, weekdaysOnly, weekendsOnly, adultHandBag, adultHoldBag);
     }
 }
