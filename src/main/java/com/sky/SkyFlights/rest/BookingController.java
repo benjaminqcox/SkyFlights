@@ -87,11 +87,11 @@ public class BookingController {
 
     // filtered api will be used to
     @GetMapping("/getFiltered/")
-    public List<FlightDTO> getOneWayFlightsFiltered(@RequestParam(value = "flyFrom", required = true) String flyFrom, @RequestParam(value = "flyTo", required = true) String flyTo, @RequestParam(value = "leaveDateFrom", required = true) String leaveDateFrom, @RequestParam(value = "leaveDateTo", required = true) String leaveDateTo, @RequestParam(value = "numberOfAdults") String numberOfAdults, @RequestParam(value = "numberOfChildren", defaultValue = "0") String numberOfChildren, @RequestParam(value = "stopovers", defaultValue = "0") String stopovers, @RequestParam(value = "currency", defaultValue = "GBP") String currency, @RequestParam(value = "priceFrom", defaultValue = "0") String priceFrom, @RequestParam(value = "priceTo", defaultValue = "20000") String priceTo, @RequestParam(value = "cabin", defaultValue = "M") String cabin, @RequestParam(value = "weekdaysOnly", defaultValue = "false") String weekdaysOnly, @RequestParam(value = "weekendsOnly", defaultValue = "false") String weekendsOnly) {
+    public List<FlightDTO> getOneWayFlightsFiltered(@RequestParam(value = "flyFrom", required = true) String flyFrom, @RequestParam(value = "flyTo", required = true) String flyTo, @RequestParam(value = "leaveDateFrom", required = true) String leaveDateFrom, @RequestParam(value = "leaveDateTo", required = true) String leaveDateTo, @RequestParam(value = "numberOfAdults", required = true) String numberOfAdults, @RequestParam(value = "numberOfChildren", defaultValue = "0") String numberOfChildren, @RequestParam(value = "stopovers", defaultValue = "0") String stopovers, @RequestParam(value = "currency", defaultValue = "GBP") String currency, @RequestParam(value = "priceFrom", defaultValue = "0") String priceFrom, @RequestParam(value = "priceTo", defaultValue = "20000") String priceTo, @RequestParam(value = "cabin", defaultValue = "M") String cabin, @RequestParam(value = "weekdaysOnly", defaultValue = "false") String weekdaysOnly, @RequestParam(value = "weekendsOnly", defaultValue = "false") String weekendsOnly) {
 
         //Handbag and holdbag numbers must match number of adults and children, so for each adult, build handbag and holdbag params with +1
         String adultBagString = "1";
-        for(int i = 1; i < parseInt(numberOfAdults); i++) {
+        for(int i = 0; i < parseInt(numberOfAdults) - 1; i++) {
             adultBagString += ",1";
         }
         this.APIQueryParams.setAdultHoldBag(adultBagString);
