@@ -6,6 +6,7 @@ import com.sky.SkyFlights.domain.FlightSearchAPI.FlightSearchResponse;
 import com.sky.SkyFlights.domain.FlightSearchAPI.FlightSearchURIBuilder;
 import com.sky.SkyFlights.domain.FlightSearchAPI.Route;
 import com.sky.SkyFlights.dtos.FlightDTO;
+import org.apache.tomcat.Jar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
@@ -53,15 +54,12 @@ public class FlightServiceAPI implements FlightService{
 
         for (int i = 0; i < response.getData().size(); i++) {
 
-            //getData() returns a list of Datums, so needs getData().get(i) to retrieve each Datum within the list
+
             Datum data = response.getData().get(i);
-
-            FlightDTO flightDTO = new FlightDTO.FlightDTOBuilder().setLocalDeparture(data.getLocalDeparture()).setLocalArrival(data.getLocalArrival()).setFlyFrom(data.getFlyFrom()).setCityFrom(data.getCityFrom()).setFlyTo(data.getFlyTo()).setCityTo(data.getCityTo()).setDuration(data.getDuration().getTotal().longValue()).setFare(data.getFare()).setAirlines(data.getAirlines()).setAvailability(data.getAvailability()).build();
-
-
+            FlightDTO flightDTO = new FlightDTO.FlightDTOBuilder().setLocalDeparture(data.getLocalDeparture()).setLocalArrival(data.getLocalArrival()).setCityFrom(data.getCityFrom()).setFlyFrom(data.getFlyFrom()).setCityTo(data.getCityTo()).setFlyTo(data.getFlyTo()).setDuration(data.getDuration().getTotal().longValue()).setFare(data.getFare()).setAirlines(data.getAirlines()).setAvailability(data.getAvailability()).setRoutes(data.getRoute()).build();
             flightDTOs.add(flightDTO);
+
         }
-        System.out.println(flightDTOs);
         return flightDTOs;
     }
 
@@ -89,11 +87,11 @@ public class FlightServiceAPI implements FlightService{
 
         for (int i = 0; i < response.getData().size(); i++) {
 
+
             Datum data = response.getData().get(i);
-
-            FlightDTO flightDTO = new FlightDTO.FlightDTOBuilder().setLocalDeparture(data.getLocalDeparture()).setLocalArrival(data.getLocalArrival()).setFlyFrom(data.getFlyFrom()).setCityFrom(response.getData().get(i).getCityFrom()).setFlyTo(data.getFlyTo()).setCityTo(data.getCityTo()).setDuration(data.getDuration().getTotal().longValue()).setFare(data.getFare()).setAirlines(data.getAirlines()).setAvailability(data.getAvailability()).build();
-
+            FlightDTO flightDTO = new FlightDTO.FlightDTOBuilder().setLocalDeparture(data.getLocalDeparture()).setLocalArrival(data.getLocalArrival()).setCityFrom(data.getCityFrom()).setFlyFrom(data.getFlyFrom()).setCityTo(data.getCityTo()).setFlyTo(data.getFlyTo()).setDuration(data.getDuration().getTotal().longValue()).setFare(data.getFare()).setAirlines(data.getAirlines()).setAvailability(data.getAvailability()).setRoutes(data.getRoute()).build();
             flightDTOs.add(flightDTO);
+
         }
         return flightDTOs;
     }
@@ -117,14 +115,11 @@ public class FlightServiceAPI implements FlightService{
 
         for (int i = 0; i < response.getData().size(); i++) {
 
+
             Datum data = response.getData().get(i);
-            FlightDTO flightDTO = new FlightDTO.FlightDTOBuilder().setLocalDeparture(data.getLocalDeparture()).setLocalArrival(data.getLocalArrival()).setFlyFrom(data.getFlyFrom()).setCityFrom(data.getCityFrom()).setFlyTo(data.getFlyTo()).setCityTo(response.getData().get(i).getCityTo()).setDuration(data.getDuration().getTotal().longValue()).setFare(data.getFare()).setAirlines(data.getAirlines()).setAvailability(data.getAvailability()).build();
-
-            Route route = response.getData().get(i).getRoute().get(1);
-            FlightDTO returnFlightDTO = new FlightDTO.FlightDTOBuilder().setLocalDeparture(route.getLocalDeparture()).setLocalArrival(route.getLocalArrival()).setFlyFrom(route.getFlyFrom()).setCityFrom(route.getCityFrom()).setFlyTo(route.getFlyTo()).setCityTo(route.getCityTo()).build();
-
+            FlightDTO flightDTO = new FlightDTO.FlightDTOBuilder().setLocalDeparture(data.getLocalDeparture()).setLocalArrival(data.getLocalArrival()).setCityFrom(data.getCityFrom()).setFlyFrom(data.getFlyFrom()).setCityTo(data.getCityTo()).setFlyTo(data.getFlyTo()).setDuration(data.getDuration().getTotal().longValue()).setFare(data.getFare()).setAirlines(data.getAirlines()).setAvailability(data.getAvailability()).setRoutes(data.getRoute()).build();
             flightDTOs.add(flightDTO);
-            flightDTOs.add(returnFlightDTO);
+
         }
         return flightDTOs;
     }
@@ -147,27 +142,21 @@ public class FlightServiceAPI implements FlightService{
                 .bodyToMono(FlightSearchResponse.class)
                 .block();
 
-        System.out.println(response.getData().get(0).getRoute().get(1));
         List<FlightDTO> flightDTOs = new ArrayList<>();
-
+        System.out.println(response.getData().get(0).getRoute());
+        List<Route> route = response.getData().get(0).getRoute();
+        System.out.println(route);
 
         for (int i = 0; i < response.getData().size(); i++) {
 
+
             Datum data = response.getData().get(i);
-            FlightDTO flightDTO = new FlightDTO.FlightDTOBuilder().setLocalDeparture(data.getLocalDeparture()).setLocalArrival(data.getLocalArrival()).setCityFrom(data.getCityFrom()).setFlyFrom(data.getFlyFrom()).setCityTo(data.getCityTo()).setFlyTo(data.getFlyTo()).setDuration(data.getDuration().getTotal().longValue()).setFare(data.getFare()).setAirlines(data.getAirlines()).setAvailability(data.getAvailability()).build();
-
-            // Each returned flight has a separate Route object containing the outbound and return flight, with the return flight info stored at the 2nd index. We then retrieve this data with .getRoute().get(1) and create a new DTO object for it
-            Route route = response.getData().get(i).getRoute().get(1);
-            FlightDTO returnFlightDTO = new FlightDTO.FlightDTOBuilder().setLocalDeparture(route.getLocalDeparture()).setLocalArrival(route.getLocalArrival()).setFlyFrom(route.getFlyFrom()).setCityFrom(route.getCityFrom()).setFlyTo(route.getFlyTo()).setCityTo(route.getCityTo()).build();
-
+            FlightDTO flightDTO = new FlightDTO.FlightDTOBuilder().setLocalDeparture(data.getLocalDeparture()).setLocalArrival(data.getLocalArrival()).setCityFrom(data.getCityFrom()).setFlyFrom(data.getFlyFrom()).setCityTo(data.getCityTo()).setFlyTo(data.getFlyTo()).setDuration(data.getDuration().getTotal().longValue()).setFare(data.getFare()).setAirlines(data.getAirlines()).setAvailability(data.getAvailability()).setRoutes(data.getRoute()).build();
             flightDTOs.add(flightDTO);
-            flightDTOs.add(returnFlightDTO);
 
         }
         return flightDTOs;
     }
-
-
 
 
 }

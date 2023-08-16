@@ -38,7 +38,7 @@ public class APIQueryParams {
 
     private String currency = "GBP";
 
-    private String maxStopovers = "1";
+    private String maxStopovers = "0";
 
     private String maxSectorStopovers = "1";
 

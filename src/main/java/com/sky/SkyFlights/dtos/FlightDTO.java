@@ -30,13 +30,15 @@ public class FlightDTO {
 
      Object availability;
 
+     List<Route> routes;
+
 
 
 
     public FlightDTO() {
     }
 
-    public FlightDTO(String local_departure, String local_arrival, String cityFrom, String flyFrom, String cityTo, String flyTo, Long duration, Fare fare, List<String> airlines, Long availability) {
+    public FlightDTO(String local_departure, String local_arrival, String cityFrom, String flyFrom, String cityTo, String flyTo, Long duration, Fare fare, List<String> airlines, Long availability, List<Route> routes) {
         this.local_departure = local_departure;
         this.local_arrival = local_arrival;
         this.cityFrom = cityFrom;
@@ -47,6 +49,7 @@ public class FlightDTO {
         this.fare = fare;
         this.airlines = airlines;
         this.availability = availability;
+        this.routes = routes;
     }
 
     public FlightDTO(FlightDTOBuilder builder) {
@@ -60,6 +63,7 @@ public class FlightDTO {
         this.fare = builder.fare;
         this.airlines = builder.airlines;
         this.availability = builder.availability;
+        this.routes = builder.routes;
     }
 
     public String getLocal_departure() {
@@ -150,6 +154,14 @@ public class FlightDTO {
         this.availability = availability;
     }
 
+    public List<Route> getRoutes() {
+        return routes;
+    }
+
+    public void setRoutes(List<Route> routes) {
+        this.routes = routes;
+    }
+
     @Override
     public String toString() {
         return "FlightDTO{" +
@@ -185,6 +197,9 @@ public class FlightDTO {
         List<String> airlines;
 
         Object availability;
+
+        List<Route> routes;
+
 
         public FlightDTOBuilder setLocalDeparture(String local_departure) {
             this.local_departure = local_departure;
@@ -231,6 +246,11 @@ public class FlightDTO {
 
         public FlightDTOBuilder setAvailability(Object availability) {
             this.availability = availability;
+            return this;
+        }
+
+        public FlightDTOBuilder setRoutes(List<Route> routes) {
+            this.routes = routes;
             return this;
         }
 
