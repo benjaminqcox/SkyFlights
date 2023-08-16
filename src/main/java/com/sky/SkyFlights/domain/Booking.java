@@ -1,38 +1,44 @@
 package com.sky.SkyFlights.domain;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import javax.persistence.*;
+import java.util.Date;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "booking")
 public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int bookingID;
-    public String userID;
+    public int flightID;
+    public String flightFrom;
+    public String flightTo;
+    public String cityFrom;
+    public String cityTo;
+    public int adults;
+    public int children;
+    public String cabinType;
+    public int stopovers;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+    public Date dateFrom;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+    public Date dateTo;
+    public Boolean returnOrNot;
 
-    public String flightID;
+    @ManyToOne(targetEntity = User.class)
+    @JsonBackReference
+    public User user;
 
-    public Booking() {
-    }
-
-    public Booking(String flightID) {
-        this.flightID = flightID;
-    }
-
-    public String getUserID() {
-        return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
-
-    public String getFlightID() {
-        return flightID;
-    }
-
-    public void setFlightID(String flightID) {
-        this.flightID = flightID;
-    }
 }

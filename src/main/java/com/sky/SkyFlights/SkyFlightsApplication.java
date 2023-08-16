@@ -13,7 +13,6 @@ public class SkyFlightsApplication {
 		return WebClient.create("https://api.tequila.kiwi.com");
 	}
 
-
 	public static void main(String[] args) {
 		SpringApplication.run(SkyFlightsApplication.class, args);
 	}
