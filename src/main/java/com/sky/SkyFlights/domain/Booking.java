@@ -1,5 +1,6 @@
 package com.sky.SkyFlights.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
@@ -37,6 +38,7 @@ public class Booking {
     public Boolean returnOrNot;
 
     @ManyToOne(targetEntity = User.class)
+    @JsonBackReference
     public User user;
 
 }

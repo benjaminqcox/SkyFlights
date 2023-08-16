@@ -1,5 +1,6 @@
 package com.sky.SkyFlights.dtos;
 
+import com.sky.SkyFlights.domain.Booking;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,5 +19,6 @@ public class UserLoginDTO {
     public String userName;
     public String firstName;
     public String lastName;
+    public List<BookingDisplayDTO> bookings;
 }
 
