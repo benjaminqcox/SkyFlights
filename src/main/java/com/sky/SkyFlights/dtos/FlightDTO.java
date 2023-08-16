@@ -2,6 +2,7 @@ package com.sky.SkyFlights.dtos;
 
 import com.sky.SkyFlights.domain.FlightSearchAPI.Duration;
 import com.sky.SkyFlights.domain.FlightSearchAPI.Fare;
+import com.sky.SkyFlights.domain.FlightSearchAPI.Route;
 
 import java.util.List;
 
@@ -28,6 +29,7 @@ public class FlightDTO {
      List<String> airlines;
 
      Object availability;
+
 
 
 
@@ -211,10 +213,6 @@ public class FlightDTO {
             this.flyTo = flyTo;
             return this;
         }
-        public FlightDTOBuilder set(String local_departure) {
-            this.local_departure = local_departure;
-            return this;
-        }
 
         public FlightDTOBuilder setDuration(Long duration) {
             this.duration = duration;
@@ -235,6 +233,7 @@ public class FlightDTO {
             this.availability = availability;
             return this;
         }
+
 
         public FlightDTO build() {
             return new FlightDTO(this);
