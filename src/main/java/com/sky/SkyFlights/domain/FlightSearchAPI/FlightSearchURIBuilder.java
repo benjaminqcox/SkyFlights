@@ -34,7 +34,6 @@ public class FlightSearchURIBuilder {
         APIQueryParams apiQueryParams = new APIQueryParams();
         apiQueryParams.setAdultHandBag(adultBagString);
         apiQueryParams.setAdultHoldBag(adultBagString);
-        System.out.println(apiQueryParams);
 
         uri = "&max_fly_duration=" + apiQueryParams.getMaxFlyDuration()
                 + "&ret_from_diff_city=" + apiQueryParams.getReturnFromDifferentCity()
