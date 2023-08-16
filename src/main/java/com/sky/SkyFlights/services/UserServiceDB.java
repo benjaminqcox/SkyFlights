@@ -24,6 +24,11 @@ public class UserServiceDB implements UserService {
         Optional<User> optionalUser = userRepo.findById(userID);
         return optionalUser.get();
     }
+    @Override
+    public User findByEmailAndPassword(String email, String password){
+        return userRepo.findByEmailAndPassword(email,password);
+
+    }
 
 //    @Override
 //    public List<User> getAllUsers() {

@@ -5,10 +5,7 @@ import java.util.List;
 
 public interface UserService {
     User createUser(User user);
-
     User getUserById(int userId);
 
-//    User updateUser(User user);
-//
-//    void deleteUser(int userId);
+    User findByEmailAndPassword(String email, String password);
 }

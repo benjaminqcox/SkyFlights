@@ -1,10 +1,12 @@
 package com.sky.SkyFlights.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.*;
+import java.util.List;
 
 
 @Getter
@@ -12,7 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "users")
+@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = {"email","username"}))
 public class User {
 
     @Id
@@ -33,7 +35,8 @@ public class User {
 
     @Column(nullable = false)
     public String password;
-
-
+//
+//    @OneToMany(mappedBy = "user")
+//    public List<Booking> booking;
 
 }
