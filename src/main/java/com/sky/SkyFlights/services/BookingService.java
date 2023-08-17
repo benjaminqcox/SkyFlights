@@ -10,5 +10,4 @@ public interface BookingService {
 
     Booking getBookingByUserId(int userID);
 
-    Booking getBookingByUsername(String username);
 }

@@ -29,7 +29,7 @@ public class User {
     @Column(nullable = false)
     public String password;
     @OneToMany(mappedBy = "user")
-    @JsonManagedReference
+//    @JsonManagedReference
     public List<Booking> booking;
 
     public User(int userID, String firstName, String lastName, String username, String email, String password, List<Booking> booking) {
