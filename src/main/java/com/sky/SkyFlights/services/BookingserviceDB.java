@@ -20,6 +20,10 @@ public class BookingserviceDB implements BookingService{
         return bookingRepo.getBookingByUserId(userID);
     }
 
+    @Override
+    public void deleteBookingByBookingId(int bookingID) {
+        bookingRepo.deleteById(bookingID);
+    }
 
 
 }
