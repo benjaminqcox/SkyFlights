@@ -1,11 +1,9 @@
 package com.sky.SkyFlights.services;
 
 
-import com.sky.SkyFlights.domain.MyUserDetails;
+
 import com.sky.SkyFlights.domain.User;
 import com.sky.SkyFlights.repos.UserRepo;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -41,22 +39,3 @@ public class UserServiceDB implements UserService{
 
     }
 
-//    @Override
-//    public List<User> getAllUsers() {
-//        return userRepo.findAll();
-//    }
-
-//    @Override
-//    public User updateUser(User user) {
-//        User existingUser = userRepo.findById(user.getId()).get();
-//        existingUser.setFirstName(user.getFirstName());
-//        existingUser.setLastName(user.getLastName());
-//        existingUser.setEmail(user.getEmail());
-//        User updatedUser = userRepo.save(existingUser);
-//        return updatedUser;
-//    }
-//
-//    @Override
-//    public void deleteUser(int userID) {
-//        userRepo.deleteById(userID);
-//    }

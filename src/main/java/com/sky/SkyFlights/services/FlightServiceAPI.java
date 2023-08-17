@@ -1,12 +1,10 @@
 package com.sky.SkyFlights.services;
 
-import com.sky.SkyFlights.domain.APIQueryParams;
 import com.sky.SkyFlights.domain.FlightSearchAPI.Datum;
 import com.sky.SkyFlights.domain.FlightSearchAPI.FlightSearchResponse;
 import com.sky.SkyFlights.domain.FlightSearchAPI.FlightSearchURIBuilder;
 import com.sky.SkyFlights.domain.FlightSearchAPI.Route;
 import com.sky.SkyFlights.dtos.FlightDTO;
-import org.apache.tomcat.Jar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;

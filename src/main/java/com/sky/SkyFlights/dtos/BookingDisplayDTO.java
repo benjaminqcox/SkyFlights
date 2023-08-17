@@ -1,16 +1,15 @@
 package com.sky.SkyFlights.dtos;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+
 import com.sky.SkyFlights.domain.Booking;
-import com.sky.SkyFlights.domain.User;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
-import java.util.List;
-import java.util.stream.IntStream;
+
 
 @Getter
 @Setter
