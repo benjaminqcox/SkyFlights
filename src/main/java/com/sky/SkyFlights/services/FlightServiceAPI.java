@@ -60,7 +60,7 @@ public class FlightServiceAPI implements FlightService{
                 if(data.getRoute().get(0).getFlyTo() != data.getFlyTo()) outboundStopovers += 1;
                 else returnStopovers += 1;
             }
-            FlightDTO flightDTO = new FlightDTO.FlightDTOBuilder().setLocalDeparture(data.getLocalDeparture()).setLocalArrival(data.getLocalArrival()).setCityFrom(data.getCityFrom()).setFlyFrom(data.getFlyFrom()).setCityTo(data.getCityTo()).setFlyTo(data.getFlyTo()).setDuration(data.getDuration().getTotal().longValue()).setFare(data.getFare()).setAirlines(data.getAirlines()).setAvailability(data.getAvailability()).setOutboundStopovers(outboundStopovers).setReturnStopovers(returnStopovers).setRoutes(data.getRoute()).build();
+            FlightDTO flightDTO = new FlightDTO.FlightDTOBuilder().setLocalDeparture(data.getLocalDeparture()).setLocalArrival(data.getLocalArrival()).setCityFrom(data.getCityFrom()).setFlyFrom(data.getFlyFrom()).setCityTo(data.getCityTo()).setFlyTo(data.getFlyTo()).setDuration(data.getDuration().getTotal().longValue()).setFare(data.getFare()).setAirlines(data.getAirlines()).setAvailability(data.getAvailability()).setOutboundStopovers(outboundStopovers).setReturnStopovers(returnStopovers).setRoutes(data.getRoute()).setBookingToken(data.getBookingToken()).build();
             flightDTOs.add(flightDTO);
 
         }
@@ -101,7 +101,7 @@ public class FlightServiceAPI implements FlightService{
                 else returnStopovers += 1;
             }
 
-            FlightDTO flightDTO = new FlightDTO.FlightDTOBuilder().setLocalDeparture(data.getLocalDeparture()).setLocalArrival(data.getLocalArrival()).setCityFrom(data.getCityFrom()).setFlyFrom(data.getFlyFrom()).setCityTo(data.getCityTo()).setFlyTo(data.getFlyTo()).setDuration(data.getDuration().getTotal().longValue()).setFare(data.getFare()).setAirlines(data.getAirlines()).setAvailability(data.getAvailability()).setOutboundStopovers(outboundStopovers).setReturnStopovers(returnStopovers).setRoutes(data.getRoute()).build();
+            FlightDTO flightDTO = new FlightDTO.FlightDTOBuilder().setLocalDeparture(data.getLocalDeparture()).setLocalArrival(data.getLocalArrival()).setCityFrom(data.getCityFrom()).setFlyFrom(data.getFlyFrom()).setCityTo(data.getCityTo()).setFlyTo(data.getFlyTo()).setDuration(data.getDuration().getTotal().longValue()).setFare(data.getFare()).setAirlines(data.getAirlines()).setAvailability(data.getAvailability()).setOutboundStopovers(outboundStopovers).setReturnStopovers(returnStopovers).setBookingToken(data.getBookingToken()).setRoutes(data.getRoute()).build();
             flightDTOs.add(flightDTO);
 
         }
@@ -141,7 +141,7 @@ public class FlightServiceAPI implements FlightService{
                    returnStopovers = 1;
                }
             }
-            FlightDTO flightDTO = new FlightDTO.FlightDTOBuilder().setLocalDeparture(data.getLocalDeparture()).setLocalArrival(data.getLocalArrival()).setCityFrom(data.getCityFrom()).setFlyFrom(data.getFlyFrom()).setCityTo(data.getCityTo()).setFlyTo(data.getFlyTo()).setDuration(data.getDuration().getTotal().longValue()).setFare(data.getFare()).setAirlines(data.getAirlines()).setAvailability(data.getAvailability()).setOutboundStopovers(outboundStopovers).setReturnStopovers(returnStopovers).setRoutes(data.getRoute()).build();
+            FlightDTO flightDTO = new FlightDTO.FlightDTOBuilder().setLocalDeparture(data.getLocalDeparture()).setLocalArrival(data.getLocalArrival()).setCityFrom(data.getCityFrom()).setFlyFrom(data.getFlyFrom()).setCityTo(data.getCityTo()).setFlyTo(data.getFlyTo()).setDuration(data.getDuration().getTotal().longValue()).setFare(data.getFare()).setAirlines(data.getAirlines()).setAvailability(data.getAvailability()).setOutboundStopovers(outboundStopovers).setReturnStopovers(returnStopovers).setBookingToken(data.getBookingToken()).setRoutes(data.getRoute()).build();
             flightDTOs.add(flightDTO);
 
         }
@@ -187,7 +187,7 @@ public class FlightServiceAPI implements FlightService{
                 }
 
             }
-            FlightDTO flightDTO = new FlightDTO.FlightDTOBuilder().setLocalDeparture(data.getLocalDeparture()).setLocalArrival(data.getLocalArrival()).setCityFrom(data.getCityFrom()).setFlyFrom(data.getFlyFrom()).setCityTo(data.getCityTo()).setFlyTo(data.getFlyTo()).setDuration(data.getDuration().getTotal().longValue()).setFare(data.getFare()).setAirlines(data.getAirlines()).setAvailability(data.getAvailability()).setOutboundStopovers(outboundStopovers).setReturnStopovers(returnStopovers).setRoutes(data.getRoute()).build();
+            FlightDTO flightDTO = new FlightDTO.FlightDTOBuilder().setLocalDeparture(data.getLocalDeparture()).setLocalArrival(data.getLocalArrival()).setCityFrom(data.getCityFrom()).setFlyFrom(data.getFlyFrom()).setCityTo(data.getCityTo()).setFlyTo(data.getFlyTo()).setDuration(data.getDuration().getTotal().longValue()).setFare(data.getFare()).setAirlines(data.getAirlines()).setAvailability(data.getAvailability()).setOutboundStopovers(outboundStopovers).setReturnStopovers(returnStopovers).setBookingToken(data.getBookingToken()).setRoutes(data.getRoute()).build();
             flightDTOs.add(flightDTO);
         }
         return flightDTOs;
