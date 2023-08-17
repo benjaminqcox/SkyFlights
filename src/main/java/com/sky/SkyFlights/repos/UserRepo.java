@@ -4,10 +4,13 @@ package com.sky.SkyFlights.repos;
 import com.sky.SkyFlights.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Optional;
+
+@Repository
 public interface UserRepo extends JpaRepository<User, Integer> {
 
-    User findByEmailAndPassword(String email, String password);
-
-
+    Optional<User> findByUsername(String userName);
 }

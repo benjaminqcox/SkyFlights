@@ -1,11 +1,10 @@
 package com.sky.SkyFlights.services;
 
 import com.sky.SkyFlights.domain.User;
-import java.util.List;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 public interface UserService {
-    User createUser(User user);
+    String registerUser(User user);
     User getUserById(int userId);
-
-    User findByEmailAndPassword(String email, String password);
 }

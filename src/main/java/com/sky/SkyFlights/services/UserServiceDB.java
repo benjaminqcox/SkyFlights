@@ -1,22 +1,36 @@
 package com.sky.SkyFlights.services;
 
 
+import com.sky.SkyFlights.domain.MyUserDetails;
 import com.sky.SkyFlights.domain.User;
 import com.sky.SkyFlights.repos.UserRepo;
-import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
-@AllArgsConstructor
-public class UserServiceDB implements UserService {
+@Component
+public class UserServiceDB implements UserService{
 
     public UserRepo userRepo;
 
+    private BCryptPasswordEncoder encoder;
+
+    public UserServiceDB(UserRepo userRepo, BCryptPasswordEncoder encoder) {
+        super();
+        this.userRepo = userRepo;
+        this.encoder = encoder;
+    }
+
     @Override
-    public User createUser(User user) {
-        return userRepo.save(user);
+    public String registerUser(User user) {
+        user.setPassword(this.encoder.encode(user.getPassword()));
+        User saved = this.userRepo.save(user);
+        return saved.getUsername();
     }
 
     @Override
@@ -24,9 +38,6 @@ public class UserServiceDB implements UserService {
         Optional<User> optionalUser = userRepo.findById(userID);
         return optionalUser.get();
     }
-    @Override
-    public User findByEmailAndPassword(String email, String password){
-        return userRepo.findByEmailAndPassword(email,password);
 
     }
 
@@ -49,4 +60,3 @@ public class UserServiceDB implements UserService {
 //    public void deleteUser(int userID) {
 //        userRepo.deleteById(userID);
 //    }
-}
