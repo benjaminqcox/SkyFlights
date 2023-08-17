@@ -1,4 +1,4 @@
-INSERT INTO `hedgehog`
+INSERT INTO `users`
 (
     `userid`,
     `email`,

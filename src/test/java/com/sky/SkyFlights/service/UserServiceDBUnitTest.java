@@ -19,7 +19,7 @@ import com.sky.SkyFlights.services.UserService;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-@Sql(scripts={"classpath:user-schema.sql"}, executionPhase=Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(scripts={"classpath:user-schema.sql", "classpath:user-data.sql"}, executionPhase=Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles("test")
 public class UserServiceDBUnitTest {
 
@@ -49,5 +49,6 @@ public class UserServiceDBUnitTest {
         Mockito.verify(this.repo, Mockito.times(1)).findById(id);
 
     }
+    
     
 }
