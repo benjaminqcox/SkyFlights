@@ -1,8 +1,7 @@
 package com.sky.SkyFlights.rest;
 
-import com.sky.SkyFlights.domain.Booking;
 import com.sky.SkyFlights.domain.User;
-import com.sky.SkyFlights.dtos.UserLoginDTO;
+import com.sky.SkyFlights.dtos.BookingsListDTO;
 import com.sky.SkyFlights.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -37,9 +36,10 @@ public class UserController {
     }
 
     @GetMapping("/getByUsername/{username}")
-    public ResponseEntity<User> getBookingByUsername(@PathVariable("username") String username) {
+    public ResponseEntity<BookingsListDTO> getBookingByUsername(@PathVariable("username") String username) {
         User user = userService.getBookingByUsername(username);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        BookingsListDTO bookingsListDTO = new BookingsListDTO(user.getUserID(), user.getUsername(), user.getBooking());
+        return new ResponseEntity<>(bookingsListDTO, HttpStatus.OK);
     }
 
     @GetMapping("/getUserID/{username}")
