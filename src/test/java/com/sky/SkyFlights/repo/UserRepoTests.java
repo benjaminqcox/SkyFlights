@@ -1,4 +1,4 @@
-package com.sky.SkyFlights;
+package com.sky.SkyFlights.repo;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.sky.SkyFlights.domain.User;
@@ -9,8 +9,10 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.test.context.ActiveProfiles;
 
 @DataJpaTest
+@ActiveProfiles("test")
 public class UserRepoTests {
 
 
