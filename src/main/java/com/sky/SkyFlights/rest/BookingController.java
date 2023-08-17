@@ -32,6 +32,12 @@ public class BookingController {
         return new ResponseEntity<>(booking, HttpStatus.OK);
     }
 
+    @GetMapping("/getByUsername/{username}")
+    public ResponseEntity<Booking> getBookingByUsername(@PathVariable("username") String username) {
+        Booking booking = bookingService.getBookingByUsername(username);
+        return new ResponseEntity<>(booking, HttpStatus.OK);
+    }
+
 }
 
 

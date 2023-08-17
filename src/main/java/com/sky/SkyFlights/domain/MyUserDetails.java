@@ -8,10 +8,11 @@ import java.util.Collection;
 public class MyUserDetails implements UserDetails {
     private User user;
 
+    private int userID;
+
     public MyUserDetails(User user) {
         this.user = user;
     }
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -47,6 +48,5 @@ public class MyUserDetails implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
 
 }
