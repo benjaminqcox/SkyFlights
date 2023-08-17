@@ -21,7 +21,7 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int bookingID;
-    public int flightID;
+    public String flightID;
     public String flightFrom;
     public String flightTo;
     public String cityFrom;

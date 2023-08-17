@@ -18,7 +18,7 @@ import java.util.Date;
 public class BookingDisplayDTO {
 
     public int bookingID;
-    public int flightID;
+    public String flightID;
     public String flightFrom;
     public String flightTo;
     public String cityFrom;

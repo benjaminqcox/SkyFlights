@@ -1,6 +1,7 @@
 package com.sky.SkyFlights.dtos;
 
 import com.sky.SkyFlights.domain.FlightSearchAPI.Fare;
+import com.sky.SkyFlights.domain.FlightSearchAPI.FlightSearchResponse;
 import com.sky.SkyFlights.domain.FlightSearchAPI.Route;
 
 import java.util.List;
@@ -35,13 +36,14 @@ public class FlightDTO {
 
      List<Route> routes;
 
+     String bookingToken;
 
 
 
     public FlightDTO() {
     }
 
-    public FlightDTO(String local_departure, String local_arrival, String cityFrom, String flyFrom, String cityTo, String flyTo, Long duration, Fare fare, List<String> airlines, Long availability, List<Route> routes, int outboundStopovers, int returnStopovers) {
+    public FlightDTO(String local_departure, String local_arrival, String cityFrom, String flyFrom, String cityTo, String flyTo, Long duration, Fare fare, List<String> airlines, Long availability, List<Route> routes, int outboundStopovers, int returnStopovers, String bookingToken) {
         this.local_departure = local_departure;
         this.local_arrival = local_arrival;
         this.cityFrom = cityFrom;
@@ -55,6 +57,7 @@ public class FlightDTO {
         this.outboundStopovers = outboundStopovers;
         this.returnStopovers = returnStopovers;
         this.routes = routes;
+        this.bookingToken = bookingToken;
     }
 
     public FlightDTO(FlightDTOBuilder builder) {
@@ -71,6 +74,7 @@ public class FlightDTO {
         this.outboundStopovers = builder.outboundStopovers;
         this.returnStopovers = builder.returnStopovers;
         this.routes = builder.routes;
+        this.bookingToken = builder.bookingToken;
     }
 
     public String getLocal_departure() {
@@ -185,6 +189,14 @@ public class FlightDTO {
         this.routes = routes;
     }
 
+    public String getBookingToken() {
+        return bookingToken;
+    }
+
+    public void setBookingToken(String bookingToken) {
+        this.bookingToken = bookingToken;
+    }
+
     @Override
     public String toString() {
         return "FlightDTO{" +
@@ -226,6 +238,8 @@ public class FlightDTO {
         int returnStopovers;
 
         List<Route> routes;
+
+        String bookingToken;
 
 
         public FlightDTOBuilder setLocalDeparture(String local_departure) {
@@ -288,6 +302,11 @@ public class FlightDTO {
 
         public FlightDTOBuilder setRoutes(List<Route> routes) {
             this.routes = routes;
+            return this;
+        }
+
+        public FlightDTOBuilder setBookingToken(String bookingToken) {
+            this.bookingToken = bookingToken;
             return this;
         }
 
