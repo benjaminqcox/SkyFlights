@@ -35,9 +35,12 @@ public class Booking {
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
     public Date dateTo;
     public Boolean returnOrNot;
+    public int price;
 
-    @ManyToOne(targetEntity = User.class)
+    @ManyToOne
     @JsonBackReference
+    @JoinColumn(name = "user_id", referencedColumnName = "userid")
+
     public User user;
 
 }

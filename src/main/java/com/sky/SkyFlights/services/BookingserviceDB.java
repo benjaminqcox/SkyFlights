@@ -20,9 +20,6 @@ public class BookingserviceDB implements BookingService{
         return bookingRepo.getBookingByUserId(userID);
     }
 
-    @Override
-    public Booking getBookingByUsername(String username) {
-        return bookingRepo.getBookingByUsername(username);
-    }
+
 
 }
