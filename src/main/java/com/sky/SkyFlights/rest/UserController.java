@@ -1,6 +1,7 @@
 package com.sky.SkyFlights.rest;
 
 import com.sky.SkyFlights.domain.User;
+import com.sky.SkyFlights.dtos.UserLoginDTO;
 import com.sky.SkyFlights.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -33,5 +34,6 @@ public class UserController {
     public String getCurrentUser() {
         return SecurityContextHolder.getContext().getAuthentication().getName();
     }
-    }
+
+}
 
