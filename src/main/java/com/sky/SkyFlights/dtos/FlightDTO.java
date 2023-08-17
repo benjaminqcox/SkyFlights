@@ -29,6 +29,10 @@ public class FlightDTO {
 
      Object availability;
 
+     int outboundStopovers;
+
+     int returnStopovers;
+
      List<Route> routes;
 
 
@@ -37,7 +41,7 @@ public class FlightDTO {
     public FlightDTO() {
     }
 
-    public FlightDTO(String local_departure, String local_arrival, String cityFrom, String flyFrom, String cityTo, String flyTo, Long duration, Fare fare, List<String> airlines, Long availability, List<Route> routes) {
+    public FlightDTO(String local_departure, String local_arrival, String cityFrom, String flyFrom, String cityTo, String flyTo, Long duration, Fare fare, List<String> airlines, Long availability, List<Route> routes, int outboundStopovers, int returnStopovers) {
         this.local_departure = local_departure;
         this.local_arrival = local_arrival;
         this.cityFrom = cityFrom;
@@ -48,6 +52,8 @@ public class FlightDTO {
         this.fare = fare;
         this.airlines = airlines;
         this.availability = availability;
+        this.outboundStopovers = outboundStopovers;
+        this.returnStopovers = returnStopovers;
         this.routes = routes;
     }
 
@@ -62,6 +68,8 @@ public class FlightDTO {
         this.fare = builder.fare;
         this.airlines = builder.airlines;
         this.availability = builder.availability;
+        this.outboundStopovers = builder.outboundStopovers;
+        this.returnStopovers = builder.returnStopovers;
         this.routes = builder.routes;
     }
 
@@ -153,6 +161,22 @@ public class FlightDTO {
         this.availability = availability;
     }
 
+    public int getOutboundStopovers() {
+        return outboundStopovers;
+    }
+
+    public void setOutboundStopovers(int outboundStopovers) {
+        this.outboundStopovers = outboundStopovers;
+    }
+
+    public int getReturnStopovers() {
+        return returnStopovers;
+    }
+
+    public void setReturnStopovers(int returnStopovers) {
+        this.returnStopovers = returnStopovers;
+    }
+
     public List<Route> getRoutes() {
         return routes;
     }
@@ -196,6 +220,10 @@ public class FlightDTO {
         List<String> airlines;
 
         Object availability;
+
+        int outboundStopovers;
+
+        int returnStopovers;
 
         List<Route> routes;
 
@@ -245,6 +273,16 @@ public class FlightDTO {
 
         public FlightDTOBuilder setAvailability(Object availability) {
             this.availability = availability;
+            return this;
+        }
+
+        public FlightDTOBuilder setOutboundStopovers(int outboundStopovers) {
+            this.outboundStopovers = outboundStopovers;
+            return this;
+        }
+
+        public FlightDTOBuilder setReturnStopovers(int returnStopovers) {
+            this.returnStopovers = returnStopovers;
             return this;
         }
 
