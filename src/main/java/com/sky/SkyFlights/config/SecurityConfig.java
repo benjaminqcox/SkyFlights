@@ -37,10 +37,6 @@ import javax.servlet.http.HttpServletResponse;
 @EnableWebSecurity
 public class SecurityConfig {
 
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.authenticationProvider(authProvider());
-//    }
 
     @Bean
     public DaoAuthenticationProvider authProvider() {
@@ -80,21 +76,16 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        http.cors().disable();
+        http.cors(cors -> cors.configurationSource(this.corsConfigurationSource()));
         http.formLogin().loginProcessingUrl("/login").successHandler(new AuthenticationSuccessHandler() {
             @Override
             public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
                 response.setStatus(204);
             }
         });
-        http.authorizeHttpRequests().antMatchers("/users/register").permitAll().anyRequest().authenticated();
+        http.authorizeHttpRequests().antMatchers("/users/register", "/booking/flights/**").permitAll().anyRequest().authenticated();
         http.exceptionHandling().authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED));
         return http.build();
     }
 
-//    @Override
-//    public void configure(WebSecurity web) throws Exception {
-//        web.ignoring().antMatchers("/", "/register");
-//
-//    }
 }
