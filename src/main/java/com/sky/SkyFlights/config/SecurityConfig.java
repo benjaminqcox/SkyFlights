@@ -83,7 +83,7 @@ public class SecurityConfig {
                 response.setStatus(204);
             }
         });
-        http.authorizeHttpRequests().antMatchers("/users/register", "/booking/flights/**").permitAll().anyRequest().authenticated();
+        http.authorizeHttpRequests().antMatchers("/users/register", "/flights/**").permitAll().anyRequest().authenticated();
         http.exceptionHandling().authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED));
         return http.build();
     }

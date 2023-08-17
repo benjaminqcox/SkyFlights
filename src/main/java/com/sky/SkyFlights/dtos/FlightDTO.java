@@ -1,6 +1,5 @@
 package com.sky.SkyFlights.dtos;
 
-import com.sky.SkyFlights.domain.FlightSearchAPI.Duration;
 import com.sky.SkyFlights.domain.FlightSearchAPI.Fare;
 import com.sky.SkyFlights.domain.FlightSearchAPI.Route;
 

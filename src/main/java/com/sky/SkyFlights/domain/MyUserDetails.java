@@ -1,7 +1,6 @@
 package com.sky.SkyFlights.domain;
 
 import org.springframework.security.core.GrantedAuthority;
-import com.sky.SkyFlights.domain.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;

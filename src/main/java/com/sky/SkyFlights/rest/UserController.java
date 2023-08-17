@@ -1,14 +1,11 @@
 package com.sky.SkyFlights.rest;
 
 import com.sky.SkyFlights.domain.User;
-import com.sky.SkyFlights.dtos.UserLoginDTO;
 import com.sky.SkyFlights.services.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 

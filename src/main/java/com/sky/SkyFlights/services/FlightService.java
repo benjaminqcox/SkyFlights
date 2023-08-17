@@ -1,7 +1,6 @@
 package com.sky.SkyFlights.services;
 
 import com.sky.SkyFlights.dtos.FlightDTO;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
