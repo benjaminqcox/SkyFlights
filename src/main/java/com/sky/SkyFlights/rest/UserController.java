@@ -20,7 +20,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/register")
-    public String registerUser(@RequestBody @Validated User user){
+    public String registerUser(@RequestBody @Validated User user) {
 
         return this.userService.registerUser(user);
     }
