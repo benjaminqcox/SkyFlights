@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -31,12 +32,9 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-
-//    @GetMapping("/findByEmailAndPassword/{email}/{password}")
-//    public ResponseEntity<User> findByEmailAndPassword(@PathVariable("email") String email,@PathVariable("password") String password ){
-//        User user = userService.findByEmailAndPassword(email,password);
-//        return new ResponseEntity<>(user, HttpStatus.OK);
-//    }
-
+    @GetMapping("/user")
+    public String getCurrentUser() {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
+    }
     }
 
