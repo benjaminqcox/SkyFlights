@@ -9,4 +9,8 @@ import org.springframework.stereotype.Repository;
 public interface BookingRepo extends JpaRepository<Booking, Integer> {
     @Query(value = "SELECT * FROM flight_booking.users u join flight_booking.booking b on b.user_userid = u.userid where u.userid=:userID",nativeQuery = true)
     Booking getBookingByUserId(int userID);
+
+    @Query(value = "SELECT * FROM flight_booking.users u join flight_booking.booking b on b.user_username = u.username where u.username=:username",nativeQuery = true)
+    Booking getBookingByUsername(String username);
+
 }

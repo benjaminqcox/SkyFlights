@@ -9,4 +9,6 @@ public interface BookingService {
     Booking createBooking(Booking booking);
 
     Booking getBookingByUserId(int userID);
+
+    Booking getBookingByUsername(String username);
 }
