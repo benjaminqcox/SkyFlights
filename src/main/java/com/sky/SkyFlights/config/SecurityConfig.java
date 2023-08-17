@@ -80,7 +80,7 @@ public class SecurityConfig {
         http.formLogin().loginProcessingUrl("/login").successHandler(new AuthenticationSuccessHandler() {
             @Override
             public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-                response.setStatus(204);
+                response.setStatus(200);
             }
         });
         http.authorizeHttpRequests().antMatchers("/users/register", "/booking/flights/**").permitAll().anyRequest().authenticated();
