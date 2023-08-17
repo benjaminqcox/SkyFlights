@@ -2,6 +2,7 @@ package com.sky.SkyFlights.services;
 
 
 
+import com.sky.SkyFlights.domain.Booking;
 import com.sky.SkyFlights.domain.User;
 import com.sky.SkyFlights.repos.UserRepo;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -37,5 +38,16 @@ public class UserServiceDB implements UserService{
         return optionalUser.get();
     }
 
+    @Override
+    public User getBookingByUsername(String username) {
+        return userRepo.findByUsername(username).get();
     }
+
+    @Override
+    public int getUserID(String username) {
+        return userRepo.findByUsername(username).get().getUserID();
+    }
+
+
+}
 

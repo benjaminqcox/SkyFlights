@@ -1,5 +1,6 @@
 package com.sky.SkyFlights.rest;
 
+import com.sky.SkyFlights.domain.Booking;
 import com.sky.SkyFlights.domain.User;
 import com.sky.SkyFlights.dtos.UserLoginDTO;
 import com.sky.SkyFlights.services.UserService;
@@ -33,6 +34,19 @@ public class UserController {
     @GetMapping("/user")
     public String getCurrentUser() {
         return SecurityContextHolder.getContext().getAuthentication().getName();
+    }
+
+    @GetMapping("/getByUsername/{username}")
+    public ResponseEntity<User> getBookingByUsername(@PathVariable("username") String username) {
+        User user = userService.getBookingByUsername(username);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @GetMapping("/getUserID/{username}")
+    public ResponseEntity<Integer> getUsername(@PathVariable("username") String username) {
+        User user = userService.getBookingByUsername(username);
+        int userID = user.getUserID();
+        return new ResponseEntity<>(userID, HttpStatus.OK);
     }
 
 }

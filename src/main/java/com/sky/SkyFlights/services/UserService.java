@@ -7,4 +7,8 @@ import com.sky.SkyFlights.dtos.UserLoginDTO;
 public interface UserService {
     String registerUser(User user);
     User getUserById(int userId);
+
+    User getBookingByUsername(String username);
+
+    int getUserID(String username);
 }
