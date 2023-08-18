@@ -27,6 +27,9 @@ public class UserServiceDB implements UserService{
 
     @Override
     public String registerUser(User user) {
+
+        //encode password into hash in db
+
         user.setPassword(this.encoder.encode(user.getPassword()));
         User saved = this.userRepo.save(user);
         return saved.getUsername();
