@@ -25,5 +25,4 @@ public class BookingserviceDB implements BookingService{
         bookingRepo.deleteById(bookingID);
     }
 
-
 }
