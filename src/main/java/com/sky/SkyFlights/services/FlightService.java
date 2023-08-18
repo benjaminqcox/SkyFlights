@@ -33,6 +33,7 @@ public class FlightService{
 
         FlightSearchURIBuilder flightSearchURIBuilder = new FlightSearchURIBuilder();
 
+        // Use flightsearchURIBuilder.uribuilder to return the remaining uri needed for the flight API and retrieve it into a Mono of FlightSearchResponse
         FlightSearchResponse response = localApiClient
                 .get()
                 .uri("/v2/search?fly_from=" + flyFrom + "&fly_to=" + flyTo + "&date_from=" + leaveDateFrom + "&date_to=" + leaveDateTo + flightSearchURIBuilder.uriBuilder())
@@ -44,13 +45,11 @@ public class FlightService{
         // create a list of flightDTOs, each their own flight option, with only the relevant information needed for the front-end
 
         if (response == null) System.out.println("oops");
-        System.out.println(response);
-        System.out.printf(response.getData().get(0).getCityFrom());
         List<FlightDTO> flightDTOs = new ArrayList<>();
 
         for (int i = 0; i < response.getData().size(); i++) {
 
-
+            // Iterate through Data objects in Response, use number of routes and matching of destinations to work out how many stopovers each leg has
             Datum data = response.getData().get(i);
             int outboundStopovers = 0;
             int returnStopovers = 0;
@@ -58,6 +57,8 @@ public class FlightService{
                 if(data.getRoute().get(0).getFlyTo() != data.getFlyTo()) outboundStopovers += 1;
                 else returnStopovers += 1;
             }
+
+            // Use builder pattern to create new flightDTO with information from Data and add it to list to be returned
             FlightDTO flightDTO = new FlightDTO.FlightDTOBuilder().setLocalDeparture(data.getLocalDeparture()).setLocalArrival(data.getLocalArrival()).setCityFrom(data.getCityFrom()).setFlyFrom(data.getFlyFrom()).setCityTo(data.getCityTo()).setFlyTo(data.getFlyTo()).setDuration(data.getDuration().getTotal().longValue()).setFare(data.getFare()).setAirlines(data.getAirlines()).setAvailability(data.getAvailability()).setOutboundStopovers(outboundStopovers).setReturnStopovers(returnStopovers).setRoutes(data.getRoute()).setBookingToken(data.getBookingToken()).build();
             flightDTOs.add(flightDTO);
 
@@ -66,7 +67,7 @@ public class FlightService{
     }
 
     public List<FlightDTO> getOneWayFlightsFiltered(String flyFrom, String flyTo, String leaveDateFrom, String leaveDateTo, String numberOfAdults, String numberOfChildren, String stopovers, String currency, String priceFrom, String priceTo, String cabin, String weekdaysOnly, String weekendsOnly) {
-        //Handbag and holdbag numbers must match number of adults and children, so for each adult, build handbag and holdbag params with +1
+        //Handbag and holdbag numbers must match number of adults and children, so for each adult, build handbag and holdbag params with +0
 
         FlightSearchURIBuilder flightSearchURIBuilder = new FlightSearchURIBuilder();
 

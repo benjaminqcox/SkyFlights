@@ -38,6 +38,8 @@ public class UserController {
     @GetMapping("/getByUsername/{username}")
     public ResponseEntity<BookingsListDTO> getBookingByUsername(@PathVariable("username") String username) {
         User user = userService.getBookingByUsername(username);
+
+        //turn user response into DTO to prevent email and password going to front end
         BookingsListDTO bookingsListDTO = new BookingsListDTO(user.getUserID(), user.getUsername(), user.getBooking());
         return new ResponseEntity<>(bookingsListDTO, HttpStatus.OK);
     }
@@ -45,6 +47,8 @@ public class UserController {
     @GetMapping("/getUserID/{username}")
     public ResponseEntity<Integer> getUsername(@PathVariable("username") String username) {
         User user = userService.getBookingByUsername(username);
+
+        // extract userID to return for front end
         int userID = user.getUserID();
         return new ResponseEntity<>(userID, HttpStatus.OK);
     }
