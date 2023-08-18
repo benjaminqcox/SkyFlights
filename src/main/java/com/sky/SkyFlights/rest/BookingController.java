@@ -32,7 +32,12 @@ public class BookingController {
         return new ResponseEntity<>(booking, HttpStatus.OK);
     }
 
+    @DeleteMapping("/deleteBookingById/{id}")
+    public ResponseEntity<String> deleteBookingByBookingId(@PathVariable("id") int bookingID) {
+        bookingService.deleteBookingByBookingId(bookingID);
+        return new ResponseEntity<>("Booking deleted", HttpStatus.OK);
 
+    }
 
 }
 
